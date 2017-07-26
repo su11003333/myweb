@@ -80,13 +80,27 @@
                     </div>
                     {{--rol-6--}}
                     <div class="col-sm-12"><hr></div>
-                    <div class="col-sm-12 text-center">
+                    <div class="col-lg-6 col-lg-offset-4 col-sm-6">
 
-                        <div class="form-group">
-                            {!! Form::submit('Update Users', ['class'=>'btn btn-primary']) !!}
-                        </div>
+                            <div class="col-lg-3 col-sm-6 ">
 
-                        {!! Form::close() !!}
+                                {!! Form::submit('Update Users', ['class'=>'btn btn-primary']) !!}
+                                {!! Form::close() !!}
+
+                            </div>
+
+
+                            <div class="col-lg-3 col-sm-6">
+
+                                {!! Form::open(['method'=>'DELETE','action'=>['AdminUsersController@destroy',$user->id]]) !!}
+                                {!! Form::submit('Delete Users', ['class'=>'btn btn-danger']) !!}
+                                {!! Form::close() !!}
+
+                            </div>
+
+
+
+
 
                     </div>
                 </div>

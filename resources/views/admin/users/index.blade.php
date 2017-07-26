@@ -7,6 +7,8 @@
 
 @section('content')
 
+    @include('message.message')
+
     {{--<div class="col-md-12 col-sm-12 col-xs-12 text-center">--}}
         {{--<ul class="pagination pagination-split">--}}
             {{--<li><a href="#">A</a></li>--}}

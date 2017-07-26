@@ -62,7 +62,9 @@ Route::get('/todo/comlete/{id}',[
 
 ]);
 
-Route::group(['middleware'=>'auth'], function(){
+Route::group(['middleware'=>'admin'], function(){
+
+
 
         Route::resource ('/admin/users','AdminUsersController');
 
