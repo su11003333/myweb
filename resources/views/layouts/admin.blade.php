@@ -333,6 +333,7 @@
 </div>
 
 <!-- jQuery -->
+
 <script src="{{asset('./js/jquery.min.js')}}"></script>
 <!-- Bootstrap -->
 <script src="{{asset('./js/bootstrap.min.js')}}"></script>
@@ -356,7 +357,7 @@
 <!-- Switchery -->
 <script src="{{asset('./js/switchery.min.js')}}"></script>
 <!-- Select2 -->
-<script src="{{asset('./js/select2.full.min.js')}}"></script>
+<script src="{{asset('./js/select2.full.js')}}"></script>
 <!-- Parsley -->
 <script src="{{asset('./js/parsley.min.js')}}"></script>
 <!-- Autosize -->
@@ -368,5 +369,7 @@
 <!-- Custom Theme Scripts -->
 <script src="{{asset('./js/custom.min.js')}}"></script>
 
+
+@yield('script')
 </body>
 </html>

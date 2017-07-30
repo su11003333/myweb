@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoriesRequest;
 use App\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminSubcategoriesController extends Controller
 {
@@ -39,6 +40,7 @@ class AdminSubcategoriesController extends Controller
         //
         Subcategory::create($request->all());
 
+        Session::flash('message','The subcategory has been created');
 
         return redirect()->back();
     }
@@ -88,6 +90,8 @@ class AdminSubcategoriesController extends Controller
         //
 
         Subcategory::findOrFail($id)->delete();
+
+        Session::flash('message','The subcatecary has been destroyed');
 
         return redirect()->back();
 

@@ -7,6 +7,8 @@
 
 @section('content')
 
+    @include('message.message')
+
     <div class="row">
         <div class="col-md-6 col-xs-12">
             <div class="x_panel">

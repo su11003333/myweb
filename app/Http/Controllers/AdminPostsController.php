@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Feature;
+use App\Post;
+use App\Subcategory;
+use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPostsController extends Controller
 {
@@ -14,7 +20,9 @@ class AdminPostsController extends Controller
     public function index()
     {
         //
-        return view('admin.posts.index');
+        $posts = Post::all();
+
+        return view('admin.posts.index',compact('posts'));
     }
 
     /**
@@ -25,7 +33,14 @@ class AdminPostsController extends Controller
     public function create()
     {
         //
-        return view('admin.posts.create');
+
+        $category =Category::pluck('name','id')->all();
+
+        $subcategory = Subcategory::pluck('name','id')->all();
+
+        $tags = Tag::pluck('name','id')->all();
+
+        return view('admin.posts.create',compact('category','subcategory','tags'));
     }
 
     /**
@@ -46,15 +61,15 @@ class AdminPostsController extends Controller
         if($file = $request->file('feature')){
 
 
-            $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
 
 
-            $file->move('images', $name);
+            $file->move('images/upload', $name);
 
-            $photo = Photo::create(['file'=>$name]);
+            $feature = Feature::create(['path'=>$name]);
 
 
-            $input['photo_id'] = $photo->id;
+            $input['feature_id'] = $feature->id;
 
 
         }
@@ -62,10 +77,9 @@ class AdminPostsController extends Controller
 
 
 
-        $user->posts()->create($input);
+        $post = $user->posts()->create($input);
 
-
-
+        $post->tags()->attach($request->input('tag_list'));
 
         return redirect('/admin/posts');
     }
