@@ -22,6 +22,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/blog',['uses'=>''])
+
 
 Route::get('/todos',[
 
@@ -73,5 +75,14 @@ Route::group(['middleware'=>'admin'], function(){
         Route::resource('/admin/categories', 'AdminCategoriesController');
 
         Route::resource('/admin/categories/subcategories','AdminSubcategoriesController');
+
+        Route::resource('/admin/tags','AdminTagsController');
+
+        Route::get('/admin/posts/feature/{id}',['uses'=>'AdminPostsController@deletefeature','as'=>'posts.feature.delete']);
+
+        Route::get('/admin/comments','PostCommentsController');
+
+        Route::get('/admin/comment/reolies','CommentRepliesController');
+
 
 });

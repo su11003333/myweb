@@ -28,6 +28,8 @@
     <!-- bootstrap-daterangepicker -->
     <link href="{{asset('./css/daterangepicker.css')}}" rel="stylesheet">
 
+    @yield('style')
+
     <!-- Custom Theme Style -->
     <link href="{{asset('./css/custom.min.css')}}" rel="stylesheet">
 </head>
@@ -38,7 +40,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>STRAY DESIGN</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -95,6 +97,7 @@
                             <li><a><i class="fa fa-table"></i> Categories <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{action('AdminCategoriesController@index')}}">All Categories</a></li>
+                                    <li><a href="{{action('AdminTagsController@index')}}">All Tags</a></li>
                                     {{--<li><a href="tables_dynamic.html">Table Dynamic</a></li>--}}
                                 </ul>
                             </li>
@@ -285,7 +288,7 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-
+            @include('message.error')
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
@@ -324,7 +327,7 @@
         <!-- footer content -->
         <footer>
             <div class="pull-right">
-                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                Stray <a href="https://colorlib.com">Design</a>
             </div>
             <div class="clearfix"></div>
         </footer>

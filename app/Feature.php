@@ -12,7 +12,7 @@ class Feature extends Model
 
     protected $fillable = [
 
-      'path'
+      'path','post_id'
 
     ];
 
@@ -22,5 +22,10 @@ class Feature extends Model
         return $this->upload.$feature;
     }
 
+    public function post(){
+
+        return $this->belongsTo('App\Post');
+
+    }
 
 }

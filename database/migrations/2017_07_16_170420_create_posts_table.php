@@ -16,11 +16,12 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->integer('category_id')->index();
-            $table->integer('subcategory_id')->index();
+            $table->integer('category_id')->index()->nullable();
+            $table->integer('subcategory_id')->index()->nullable();
             $table->string('title');
             $table->text('body');
-            $table->string('feature_id')->index();
+//            $table->string('feature_id')->default(0);
+            $table->string('banner');
             $table->timestamps();
         });
     }

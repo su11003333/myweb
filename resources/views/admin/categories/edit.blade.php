@@ -2,7 +2,7 @@
 
 
 @section('title')
-    <h1>All Categories</h1>
+    <h1>Edit Categories</h1>
 @endsection
 
 @section('content')
@@ -110,7 +110,7 @@
         <div class="col-md-6 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Category <small></small></h2>
+                    <h2>Subcategory <p class="badge bg-green">{{\App\Subcategory::all()->count()}}</p> </h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -126,7 +126,7 @@
                         <thead>
                         <tr>
                             {{--<th>Id</th>--}}
-                            <th>Category</th>
+                            <th>Subcategory </th>
 
                         </tr>
                         </thead>
@@ -143,7 +143,7 @@
                                     <td>{{$subcategory->name}}</td>
                                     {{--<td>{{$subcategory->created_at?$subcategory->created_at:"No date"}}</td>--}}
                                     <td>
-                                        {!! Form::open(['method'=>'DELETE', 'action'=> ['AdminSubcategoriesController@destroy', $subcategory->id]]) !!}
+                                        {!! Form::open(['method'=>'DELETE', 'action'=> ['AdminSubcategoriesController@destroy', $subcategory->id],'class'=>'delete_confirm']) !!}
 
 
                                         {!! Form::submit('Delete Category', ['class'=>'btn btn-danger ']) !!}
@@ -168,17 +168,28 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 @stop
+
+
+@section('script')
+
+    <script type="text/javascript">
+
+        $(".delete_confirm").submit(function(e){
+
+            var delete_confirm_message = confirm ("Are you sure you want to delete!");
+
+            if(delete_confirm_message){
+
+                return true;
+
+            }else{
+                e.preventDefault();
+                return false;
+
+            }
+        })
+
+    </script>
+
+@endsection

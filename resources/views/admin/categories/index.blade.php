@@ -2,7 +2,7 @@
 
 
 @section('title')
-    <h1>All Categories</h1>
+    <h1>All Categories <p class="badge bg-green">{{\App\Category::all()->count()}}</p></h1>
 @endsection
 
 @section('content')
@@ -62,7 +62,7 @@
         <div class="col-md-6 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Category <small></small></h2>
+                    <h2>Category </h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -78,7 +78,7 @@
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Category</th>
+                            <th>Subategory</th>
 
                         </tr>
                         </thead>

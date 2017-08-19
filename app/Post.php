@@ -10,7 +10,7 @@ class Post extends Model
 
     protected $fillable = [
 
-      'title','user_id','feature_id','category_id','subcategory_id','body'
+      'title','user_id','category_id','subcategory_id','body','img' ,'banner'
 
     ];
 
@@ -33,9 +33,9 @@ class Post extends Model
     }
 
 
-    public function Feature(){
+    public function Features(){
 
-        return $this->belongsTo('App\Feature');
+        return $this->hasMany('App\Feature');
 
     }
 
@@ -45,5 +45,10 @@ class Post extends Model
 //
 
     }
+    public function Imgs(){
+
+        return $this->hasMany('App\Img');
+    }
+
 
 }

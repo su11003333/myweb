@@ -15,6 +15,7 @@ class CreateFeaturesTable extends Migration
     {
         Schema::create('features', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('post_id');
             $table->string('path');
             $table->timestamps();
         });

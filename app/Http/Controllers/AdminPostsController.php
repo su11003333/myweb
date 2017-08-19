@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Feature;
+use App\Http\Requests\PostsCreateRequest;
 use App\Post;
 use App\Subcategory;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AdminPostsController extends Controller
 {
@@ -49,27 +51,37 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostsCreateRequest $request)
     {
         //
-        $input = $request->all();
+        $input = $request->except('fearture');
 
 
         $user = Auth::user();
 
+        $post = $user->posts()->create($input);
 
-        if($file = $request->file('feature')){
-
-
-            $name = time().$file->getClientOriginalName();
+        $post->tags()->attach($request->input('tag_list'));
 
 
-            $file->move('images/upload', $name);
+        if($files = $request->file('feature')){
+//
+              foreach($files as $file){
 
-            $feature = Feature::create(['path'=>$name]);
+                  $name = time().$file->getClientOriginalName();
 
 
-            $input['feature_id'] = $feature->id;
+                  $file->move('images/upload', $name);
+
+                  Feature::create(['path'=>$name,'post_id'=>$post->id]);
+
+
+//                  $input['feature_id'] = $feature->id;
+
+
+              }
+
+
 
 
         }
@@ -77,9 +89,27 @@ class AdminPostsController extends Controller
 
 
 
-        $post = $user->posts()->create($input);
+//        if($file = $request->file('feature')){
+//
+//
 
-        $post->tags()->attach($request->input('tag_list'));
+//            $name = time().$file->getClientOriginalName();
+//
+//
+//            $file->move('images/upload', $name);
+//
+//            $feature = Feature::create(['path'=>$name]);
+//
+//
+//            $input['feature_id'] = $feature->id;
+//
+//
+//        }
+
+
+
+
+        Session::flash('message','The new Post has been created');
 
         return redirect('/admin/posts');
     }
@@ -104,6 +134,18 @@ class AdminPostsController extends Controller
     public function edit($id)
     {
         //
+
+        $post = Post::findOrFail($id);
+
+        $category =Category::pluck('name','id')->all();
+
+        $subcategory = Subcategory::pluck('name','id')->all();
+
+        $tags = Tag::pluck('name','id')->all();
+
+        $features = $post->Features->all();
+
+        return view('/admin/posts/edit',compact('post','category','subcategory','tags','features'));
     }
 
     /**
@@ -113,9 +155,49 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostsCreateRequest $request, $id)
     {
         //
+        $input = $request->except('fearture');
+
+
+        $user = Auth::user();
+
+        $post = $user->posts()->findOrFail($id);
+
+        $post->update($input);
+
+
+        if(trim($request->input['tag_list'])==''){
+
+            $post->tags()->detach();
+
+            $post->tags()->attach($request->input('tag_list'));
+
+        }
+//
+
+
+
+        if($files = $request->file('feature')){
+//
+            foreach($files as $file){
+
+                $name = time().$file->getClientOriginalName();
+
+
+                $file->move('images/upload', $name);
+
+                Feature::create(['path'=>$name,'post_id'=>$post->id]);
+
+            }
+
+        }
+        Session::flash('message','The new Post has been update');
+
+        return redirect('/admin/posts');
+
+
     }
 
     /**
@@ -127,5 +209,21 @@ class AdminPostsController extends Controller
     public function destroy($id)
     {
         //
+
+        Post::findOrFail($id)->delete();
+
+        Session::flash('message','You have deleted a post');
+
+        return redirect('/admin/posts');
+
+    }
+
+
+    public function deletefeature($id){
+
+        Feature::findOrFail($id)->delete();
+
+        return redirect()->back();
+
     }
 }

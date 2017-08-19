@@ -92,7 +92,7 @@
 
                             <div class="col-lg-3 col-sm-6">
 
-                                {!! Form::open(['method'=>'DELETE','action'=>['AdminUsersController@destroy',$user->id]]) !!}
+                                {!! Form::open(['method'=>'DELETE','action'=>['AdminUsersController@destroy',$user->id],'class'=>'delete_confirm']) !!}
                                 {!! Form::submit('Delete Users', ['class'=>'btn btn-danger']) !!}
                                 {!! Form::close() !!}
 
@@ -130,3 +130,24 @@
 
 
 @stop
+
+@section('script')
+    <script type="text/javascript">
+
+        $(".delete_confirm").submit(function(e){
+
+            var delete_confirm_message = confirm ("Are you sure you want to delete!");
+
+            if(delete_confirm_message){
+
+                return true;
+
+            }else{
+                e.preventDefault();
+                return false;
+
+            }
+        })
+
+    </script>
+@endsection

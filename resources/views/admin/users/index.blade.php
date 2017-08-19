@@ -2,7 +2,7 @@
 
 
 @section('title')
-    <h1>All Users</h1>
+    <h1>All Users <p class="badge bg-green">{{\App\User::all()->count()}}</p></h1>
 @endsection
 
 @section('content')
