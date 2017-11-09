@@ -14,13 +14,13 @@ class Category extends Model
 
     ];
 
-    public function Posts(){
+    public function posts(){
 
         return $this->hasMany('App\Post');
 
     }
 
-    public function Subcategories(){
+    public function subcategories(){
 
         return $this->hasMany('App\Subcategory');
 

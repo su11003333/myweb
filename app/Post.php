@@ -33,7 +33,7 @@ class Post extends Model
     }
 
 
-    public function Features(){
+    public function features(){
 
         return $this->hasMany('App\Feature');
 
@@ -45,9 +45,15 @@ class Post extends Model
 //
 
     }
-    public function Imgs(){
+    public function imgs(){
 
         return $this->hasMany('App\Img');
+    }
+
+    public function comments(){
+
+        return $this->hasMany('App\Comment');
+
     }
 
 

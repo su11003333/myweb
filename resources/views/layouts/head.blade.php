@@ -29,7 +29,7 @@
 
     <!-- Document Title
     ============================================= -->
-    <title>Stray-design | Web-design</title>
+    <title>Stray-design</title>
 
     <style>
 

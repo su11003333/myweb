@@ -62,8 +62,9 @@
 
             <div class="form-group">
                 {!! Form::label('tag_list','Tags') !!}
-                {!! Form::select('tag_list[]',$tags,null,['class'=>'form-control js-example-basic-multiple js-states','multiple'=>'multiple']) !!}
+                {!! Form::select('tag_list[]',$tags,$tag_list,['class'=>'form-control js-example-basic-multiple js-states','multiple']) !!}
             </div>
+
 
 
 
@@ -93,7 +94,7 @@
             {{--<div height="50" class="dropzone dropzone-previews" id="my-awesome-dropzone"></div>--}}
 
             <div class="form-group">
-                {!! Form::label('feature','Feature Phoot') !!}
+                {!! Form::label('feature','Feature Photo') !!}
                 {!! Form::file('feature[]', ['class'=>'form-control ','multiple'=>'multiple','id'=>'file'])!!}
 
 
@@ -205,13 +206,26 @@
     {{--</script>--}}
 
     <script type="text/javascript">
-        $(function() {
-            $(".js-example-basic-multiple").select2({
+        $(document).ready(function(){
+            var data = {!! json_encode($tag_list) !!};
+
+            console.log(data);
+
+            var selection = [2,3,4];
+
+            $(".js-example-basic-multiple").selectWoo({
                 placeholder: "Add Tags ",
                 allowClear: true,
-                width: '100%'
+                width: "100%",
+                multiple: true
+
             });
+//            $(".js-example-basic-multiple").selectWoo("val",selection).trigger('change');
+//            $(".js-example-basic-multiple").select2("data", [{id: "CA", text: "California"},{id:"MA", text: "Massachusetts"}]);
+
         });
+
+
     </script>
     <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
     <script>

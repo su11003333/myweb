@@ -19,9 +19,10 @@
             <th>Title</th>
             <th>Author</th>
             <th>Tag</th>
-            {{--<th>Content</th>--}}
             <th>Created</th>
             <th>Updated</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -51,12 +52,47 @@
 
                         @endif
                     </td>
-
-
-
                     {{--<td>{!!$post->body!!}</td>--}}
                     <td>{{$post->created_at->diffForHumans()?$post->created_at->diffForHumans():"No date"}}</td>
                     <td>{{$post->updated_at->diffForHumans()?$post->updated_at->diffForHumans():"No date"}}</td>
+                    <td>
+                        <a href="{{route('home.post',$post->id)}}">View Post</a>
+                    </td>
+                    <td>
+                        <a href="{{route('comments.show',$post->id)}}">View Comments</a>
+                    </td>
+                    <td>
+                        @if($post->is_active == 1)
+
+                            {!! Form::model($post,['method'=>'PATCH','action'=>['AdminPostsController@active',$post->id]]) !!}
+
+
+                            <input type="hidden" value="0" name="is_active">
+
+                            <div class="form-group">
+                                {!! Form::submit('Un-approve', ['class'=>'btn btn-primary']) !!}
+                            </div>
+
+                            {!! Form::close() !!}
+
+
+                        @else
+
+
+                            {!! Form::model($post,['method'=>'PATCH','action'=>['AdminPostsController@active',$post->id]]) !!}
+
+
+                            <input type="hidden" value="1" name="is_active">
+
+                            <div class="form-group">
+                                {!! Form::submit('Approve', ['class'=>'btn btn-danger']) !!}
+                            </div>
+
+                            {!! Form::close() !!}
+
+
+                        @endif
+                    </td>
                 </tr>
 
             @endforeach

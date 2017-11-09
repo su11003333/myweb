@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoriesRequest;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -37,7 +38,7 @@ class AdminTagsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoriesRequest $request)
     {
         //
         Tag::create($request->all());
@@ -67,6 +68,11 @@ class AdminTagsController extends Controller
     public function edit($id)
     {
         //
+        $tag=Tag::findOrFail($id);
+
+
+
+        return view('admin.tags.edit',compact('tag'));
     }
 
     /**
@@ -76,9 +82,17 @@ class AdminTagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoriesRequest $request, $id)
     {
         //
+        $tag = Tag::findOrFail($id);
+
+        $tag->update($request->all());
+
+        Session::flash('message','The Tag has been updated');
+
+        return redirect('/admin/tags');
+
     }
 
     /**
@@ -92,6 +106,6 @@ class AdminTagsController extends Controller
         //
         Tag::findOrFail($id)->delete();
 
-        return redirect()->back();
+        return redirect('/admin/tags');
     }
 }

@@ -31,7 +31,7 @@ class PostsCreateRequest extends FormRequest
 
         ];
 
-        $features = count($this->input('feature'));
+        $features = count($this->input('worksfeatures'));
         foreach(range(0, $features) as $index) {
             $rules['features.' . $index] = 'image|mimes:jpeg,bmp,png|max:2000';
         }

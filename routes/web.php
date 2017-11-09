@@ -18,12 +18,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',['as'=>'/','uses'=>'welcomeController@index']);
 
-Route::get('/blog',['uses'=>''])
+Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostsController@post']);
 
+Route::get('/posts',['as'=>'home.posts','uses'=>'AdminPostsController@posts']);
+
+Route::get('/works',['as'=>'home.works','uses'=>'AdminWorksController@works']);
+
+Route::get('/work/{id}',['as'=>'home.work','uses'=>'AdminWorksController@work_single']);
+
+Route::get('/ajax-work-template/{id}',['as'=>'home.ajax-work','uses'=>'AdminWorksController@ajax_work']);
+
+Route::post('/get_in_touch',['as'=>'get_in_touch','uses'=>'welcomeController@store']);
 
 Route::get('/todos',[
 
@@ -72,6 +79,12 @@ Route::group(['middleware'=>'admin'], function(){
 
         Route::resource('/admin/posts','AdminPostsController');
 
+        Route::resource('/admin/works','AdminWorksController');
+
+        Route::resource('/admin/workstags', 'AdminWorkstagsController');
+
+        Route::resource('/admin/workscategories', 'AdminWorkscategoriesController');
+
         Route::resource('/admin/categories', 'AdminCategoriesController');
 
         Route::resource('/admin/categories/subcategories','AdminSubcategoriesController');
@@ -80,9 +93,21 @@ Route::group(['middleware'=>'admin'], function(){
 
         Route::get('/admin/posts/feature/{id}',['uses'=>'AdminPostsController@deletefeature','as'=>'posts.feature.delete']);
 
-        Route::get('/admin/comments','PostCommentsController');
+        Route::get('/admin/works/worksfeature/{id}',['uses'=>'AdminWorksController@deletefeature','as'=>'works.feature.delete']);
 
-        Route::get('/admin/comment/reolies','CommentRepliesController');
+        Route::patch('/admin/works/is_active/{id}',['uses'=>'AdminWorksController@active','as'=>'works.is_active.active']);
 
+        Route::patch('/admin/posts/is_active/{id}',['uses'=>'AdminPostsController@active','as'=>'post.is_active.active']);
+
+        Route::resource('/admin/comments','PostCommentsController');
+
+        Route::resource('/admin/comment/replies','CommentRepliesController');
+
+
+});
+
+Route::group(['middleware'=>'auth'], function(){
+
+   Route::post('comment/reply', 'CommentRepliesController@createReply');
 
 });

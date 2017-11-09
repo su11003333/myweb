@@ -12,7 +12,7 @@ class Subcategory extends Model
         'name','category_id'
     ];
 
-    public function Category(){
+    public function category(){
 
         $this->belongsTo('App\Category');
 

@@ -75,9 +75,7 @@ class AdminPostsController extends Controller
 
                   Feature::create(['path'=>$name,'post_id'=>$post->id]);
 
-
 //                  $input['feature_id'] = $feature->id;
-
 
               }
 
@@ -141,11 +139,14 @@ class AdminPostsController extends Controller
 
         $subcategory = Subcategory::pluck('name','id')->all();
 
-        $tags = Tag::pluck('name','id')->all();
+        $tags = Tag::pluck('name','id')->toArray();
 
-        $features = $post->Features->all();
+        $tag_list = $post->tags->pluck('id')->toArray();
 
-        return view('/admin/posts/edit',compact('post','category','subcategory','tags','features'));
+        $features = $post->features->all();
+
+        return view('/admin/posts/edit',compact('post','category','subcategory','tags','features','tag_list'));
+//        return $tag_list;
     }
 
     /**
@@ -226,4 +227,62 @@ class AdminPostsController extends Controller
         return redirect()->back();
 
     }
+
+
+    public function post($id){
+
+        $post = Post::findOrFail($id);
+
+        if($post->is_active == 1){
+
+            $postnext = Post::where('id','>',$post->id)->orderBy('id','asc')->first();
+//
+            $postpre = Post::where('id', '<', $post->id)->orderBy('id','desc')->first();
+
+            $tags = $post->tags()->get();
+
+            $comments = $post->comments()->whereIsActive(1)->get();
+
+            return view('/blog/index',compact('post','comments','postnext','postpre','tags'));
+
+//        return $postpre->title;
+
+        }else{
+            return redirect('/posts');
+        }
+
+
+
+    }
+
+
+    public function posts(){
+
+        $posts = Post::where('is_active','1')->paginate(10);
+
+        return view('/blog/home',compact('posts'));
+
+//        return $posts;
+
+    }
+
+    public function active(Request $request, $id){
+
+        $active = $request->input('is_active');
+
+        $user = Auth::user();
+
+        $post = $user->posts()->findOrFail($id);
+
+        $post->is_active = $active;
+
+        $post->save();
+
+//        Session::flash('message','The condition has been update');
+
+        return redirect('/admin/posts');
+
+    }
+
+
 }

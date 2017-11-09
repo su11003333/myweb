@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -20,7 +20,7 @@
     <!-- bootstrap-wysiwyg -->
     <link href="{{asset('./css/prettify.min.css')}}" rel="stylesheet">
     <!-- Select2 -->
-    <link href="{{asset('./css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('./css/selectWoo.min.css')}}" rel="stylesheet">
     <!-- Switchery -->
     <link href="{{asset('./css/switchery.min.css')}}" rel="stylesheet">
     <!-- starrr -->
@@ -75,6 +75,7 @@
                                 <ul class="nav child_menu">
                                     <li><a href="{{route('posts.index')}}">All Posts</a></li>
                                     <li><a href="{{route('posts.create')}}">Create New Posts</a></li>
+                                    <li><a href="{{route('comments.index')}}">Comments</a></li>
                                     {{--<li><a href="form_validation.html">Form Validation</a></li>--}}
                                     {{--<li><a href="form_wizards.html">Form Wizard</a></li>--}}
                                     {{--<li><a href="form_upload.html">Form Upload</a></li>--}}
@@ -101,13 +102,13 @@
                                     {{--<li><a href="tables_dynamic.html">Table Dynamic</a></li>--}}
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-bar-chart-o"></i>Works <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="chartjs.html">Chart JS</a></li>
-                                    <li><a href="chartjs2.html">Chart JS2</a></li>
-                                    <li><a href="morisjs.html">Moris JS</a></li>
-                                    <li><a href="echarts.html">ECharts</a></li>
-                                    <li><a href="other_charts.html">Other Charts</a></li>
+                                    <li><a href="{{action('AdminWorksController@index')}}">All Works</a></li>
+                                    <li><a href="{{action('AdminWorksController@create')}}">Create New Work</a></li>
+                                    <li><a href="{{action('AdminWorkstagsController@index')}}">Works Tags</a></li>
+                                    <li><a href="{{action('AdminWorkscategoriesController@index')}}">Works Categories</a></li>
+
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
@@ -360,7 +361,7 @@
 <!-- Switchery -->
 <script src="{{asset('./js/switchery.min.js')}}"></script>
 <!-- Select2 -->
-<script src="{{asset('./js/select2.full.js')}}"></script>
+<script src="{{asset('./js/selectWoo.full.min.js')}}"></script>
 <!-- Parsley -->
 <script src="{{asset('./js/parsley.min.js')}}"></script>
 <!-- Autosize -->
