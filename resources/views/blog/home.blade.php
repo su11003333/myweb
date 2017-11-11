@@ -1,5 +1,19 @@
 @extends('layouts.post_maintemplate')
 
+@section('page_title')
+    <section id="page-title">
+
+        <div class="container clearfix">
+            <h1>Posts</h1>
+            <span>Showcase of Our Awesome Works</span>
+            {{--<ol class="breadcrumb">--}}
+            {{--<li><a href="#">Home</a></li>--}}
+            {{--<li class="active">Portfolio</li>--}}
+            {{--</ol>--}}
+        </div>
+
+    </section>
+@endsection
 
 @section('content')
 

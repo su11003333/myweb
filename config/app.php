@@ -181,6 +181,8 @@ return [
 //        tinyeditor
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
+        Basemkhirat\Elasticsearch\ElasticsearchServiceProvider::class
 
     ],
 
@@ -234,6 +236,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'ES' => Basemkhirat\Elasticsearch\Facades\ES::class
 
     ],
 

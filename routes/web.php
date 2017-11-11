@@ -32,6 +32,8 @@ Route::get('/ajax-work-template/{id}',['as'=>'home.ajax-work','uses'=>'AdminWork
 
 Route::post('/get_in_touch',['as'=>'get_in_touch','uses'=>'welcomeController@store']);
 
+Route::get('/search',['as'=>'search','uses'=>'SearchController@search']);
+
 Route::get('/todos',[
 
     'uses'=>'TodosController@index'

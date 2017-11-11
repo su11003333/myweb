@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Works extends Model
 {
     //
+    use Searchable;
+
     protected $fillable = [
 
         'title','workscategories_id','user_id','company','intro','body','url','banner','star','like','date'

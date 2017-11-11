@@ -24,6 +24,72 @@
     <link rel="stylesheet" href="demos/media-agency/fonts.css" type="text/css" />
 
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <style>
+
+        .SearchBar {
+            display:block;
+            margin-top:35px ;
+            margin-bottom:35px;
+            margin-left:60px;
+            margin-right:0;
+        }
+        .SearchBar.is-expanded .fa-search {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+        .SearchBar.is-expanded input {
+            width: 120px;
+        }
+        @media only screen and (max-width: 900px){
+            .SearchBar.is-expanded input {
+                width: 250px;
+            }
+            .SearchBar {
+                margin-left:20px;
+            }
+        }
+
+        .SearchBar .fa-search {
+            background: black;
+            color: white;
+            line-height: 32px;
+            font-size: 16px;
+            width: 2em;
+            text-align: center;
+            margin: 0 0 0 -16px;
+            display: inline-block;
+            vertical-align: top;
+            border-top-left-radius: 100%;
+            border-top-right-radius: 100%;
+            border-bottom-left-radius: 100%;
+            border-bottom-right-radius: 100%;
+            -webkit-transition: -webkit-transform 0.65s ease;
+            -moz-transition: -webkit-transform 0.65s ease;
+            transition: -webkit-transform 0.65s ease;
+        }
+
+        .SearchBar input {
+            padding: 0;
+            padding-left:10px;
+            background: #eee;
+            display: inline-block;
+            border: 0;
+            vertical-align: top;
+            border-bottom-left-radius: 50px;
+            border-top-left-radius: 50px;
+            height: 32px;
+            width: 0;
+            -webkit-transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            -moz-transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: width 0.65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+    </style>
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Document Title
@@ -95,7 +161,19 @@
                                 @endif
                         @endif
 
+                        <li style="padding:0;">
+                            <div class="SearchBar is-expanded">
+                        {!! Form::open(['method'=>'Get','action'=>'SearchController@search','id'=>'searchkey']) !!}
 
+                                {!! Form::text('searchKey',null,['placeholder'=>' Search','id'=>'searchword']) !!}
+                                <div class="fa fa-search" id="search_submit" class=""></div>
+
+                            {!! Form::close() !!}
+
+
+                          </div>
+
+                      </li>
 
                     </ul>
 
@@ -541,6 +619,30 @@
         var t = setTimeout(function(){ SEMICOLON.portfolio.portfolioDescMargin(); }, 200);
 
     });
+
+</script>
+<script>
+//    $('.fa-search').on('click', function(){
+//        $('.SearchBar').toggleClass('is-expanded');
+//        $('#search_submit').toggleClass('readytosend');
+//    });
+
+</script>
+<script>
+
+
+        $( "#search_submit" ).click(function() {
+            console.log($('#searchword').val())
+            var searchword = $.trim($('#searchword').val());
+            if( searchword ===''){
+                alert("It can't be empty!");
+                return false;
+            }else{
+                $( "#searchkey" ).submit();
+            }
+
+        });
+
 
 </script>
 @include('message.error')

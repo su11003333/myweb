@@ -33,7 +33,7 @@
 
         setInterval(function(){
             $("#message").fadeOut(1000);
-        },3000);
+        },1000);
 
     </script>
 @endif

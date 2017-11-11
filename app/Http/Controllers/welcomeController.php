@@ -30,4 +30,21 @@ class welcomeController extends Controller
         return redirect()->back();
 
     }
+
+    public function search($searchKey){
+
+//        $error = ['error' => 'No results found, please try with different keywords.'];
+
+        $works = Works::search($searchKey)->paginate(10);
+
+        if ($works->count()){
+//            Session::flash('message','The user has been created!');
+            return view('search',compact('works'));
+        }else{
+            return view('search',compact('works'));
+        }
+
+
+    }
+
 }

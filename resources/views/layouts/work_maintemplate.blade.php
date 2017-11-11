@@ -49,18 +49,9 @@
 
     <!-- Page Title
     ============================================= -->
-    <section id="page-title">
 
-        <div class="container clearfix">
-            <h1>Portfolio</h1>
-            <span>Showcase of Our Awesome Works</span>
-            {{--<ol class="breadcrumb">--}}
-                {{--<li><a href="#">Home</a></li>--}}
-                {{--<li class="active">Portfolio</li>--}}
-            {{--</ol>--}}
-        </div>
-
-    </section><!-- #page-title end -->
+    @yield('page_title')
+    <!-- #page-title end -->
 
     <!-- Content
     ============================================= -->
