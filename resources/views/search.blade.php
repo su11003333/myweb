@@ -48,7 +48,7 @@
     <section id="page-title">
 
         <div class="container clearfix">
-            <h1>Search Result</h1>
+            <h1>Search {{count($works)+count($posts)}} Result</h1>
             {{--<span>Showcase of Our Awesome Works</span>--}}
             {{--<ol class="breadcrumb">--}}
             {{--<li><a href="#">Home</a></li>--}}
@@ -62,102 +62,138 @@
 @section('content')
 
 
-    <div class="clearfix">
-        {{--<div id="js-filters-lightbox-gallery1" class="cbp-l-filters-dropdown cbp-l-filters-dropdown-floated">--}}
-        {{--<div class="cbp-l-filters-dropdownWrap">--}}
-        {{--<div class="cbp-l-filters-dropdownHeader">Filter Gallery</div>--}}
-        {{--<div class="cbp-l-filters-dropdownList">--}}
-        {{--<div data-filter="*" class="cbp-filter-item-active cbp-filter-item">All</div>--}}
-        {{--@foreach($workscategories as $workscategory)--}}
-        {{--<div data-filter=".{{$workscategory->name}}" class="cbp-filter-item">{{$workscategory->name}}</div>--}}
-        {{--@endforeach--}}
+    <div class="tabs clearfix" id="tab-3">
+
+        <ul class="tab-nav tab-nav2 clearfix">
+            <li><a href="#tabs-1">{{count($works)}} Portifolio</a></li>
+            <li><a href="#tabs-2">{{count($posts)}} Posts</a></li>
 
 
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
+        </ul>
 
-        <div id="js-filters-lightbox-gallery2" class="cbp-l-filters-button cbp-l-filters-left">
-            <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">All</div>
-            {{--@foreach($workscategories as $workscategory)--}}
+        <div class="tab-container">
 
-                {{--<div data-filter=".{{$workscategory->id}}" class="cbp-filter-item">{{$workscategory->name}}</div>--}}
+            <div class="tab-content clearfix" id="tabs-1">
 
-            {{--@endforeach--}}
-            {{--<div data-filter=".graphic" class="cbp-filter-item">Graphic</div>--}}
-            {{--<div data-filter=".logos" class="cbp-filter-item">Logo</div>--}}
-            {{--<div data-filter=".motion" class="cbp-filter-item">Motion</div>--}}
-        </div>
-    </div>
+                <div id="js-grid-lightbox-gallery" class="cbp" >
+                    @if($works->count())
 
-    <div id="js-grid-lightbox-gallery" class="cbp" data-next-page="{{$works->nextPageUrl()}}">
-        @if($works)
+                        @foreach($works as $work)
+                            <div class="cbp-item {{$work->workscategories->id}}">
+                                <div class="cbp-caption">
+                                    <div class="cbp-caption-defaultWrap">
+                                        <img src="{{$work->banner}}" alt="">
+                                    </div>
+                                    <div class="cbp-caption-activeWrap">
+                                        <div class="cbp-l-caption-alignCenter">
+                                            <div class="cbp-l-caption-body">
 
-            @foreach($works as $work)
-                <div class="cbp-item {{$work->workscategories->id}}">
-                    <div class="cbp-caption">
-                        <div class="cbp-caption-defaultWrap">
-                            <img src="{{$work->banner}}" alt="">
-                        </div>
-                        <div class="cbp-caption-activeWrap">
-                            <div class="cbp-l-caption-alignCenter">
-                                <div class="cbp-l-caption-body">
-                                    <a href="{{url('/ajax-work-template/'.$work->id)}}" class="cbp-singlePageInline cbp-l-caption-buttonLeft" rel="nofollow">Info</a>
-                                    <a href="{{route('home.work',$work->id)}}" target="_blank" class=" cbp-l-caption-buttonRight" >More detail</a>
+                                                <a href="{{route('home.work',$work->id)}}" target="_blank" class=" cbp-l-caption-buttonRight" >More detail</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <a href="{{route('home.work',$work->id)}}" target="_blank" class=" cbp-l-grid-masonry-projects-title" rel="nofollow">{{$work->title}}</a>
+                                <div class="cbp-l-grid-masonry-projects-desc">{!! $work->intro !!}</div>
                             </div>
-                        </div>
-                    </div>
-                    <a href="{{route('home.work',$work->id)}}" target="_blank" class=" cbp-l-grid-masonry-projects-title" rel="nofollow">{{$work->title}}</a>
-                    <div class="cbp-l-grid-masonry-projects-desc">{!! $work->intro !!}</div>
+
+
+                            {{--<div class="cbp-item  {{$work->workscategories->id}} ">--}}
+                            {{--<a href="{{url('/ajax-work-template/'.$work->id)}}" class="cbp-caption cbp-singlePageInline"  rel="nofollow">--}}
+                            {{----}}
+                            {{--<div class="cbp-caption-defaultWrap">--}}
+                            {{--<img src="{{$work->banner}}" alt="">--}}
+                            {{--</div>--}}
+                            {{----}}
+
+                            {{--<div class="cbp-caption-activeWrap">--}}
+                            {{--<div class="cbp-l-caption-alignLeft">--}}
+                            {{--<div class="cbp-l-caption-body">--}}
+                            {{--<div class="cbp-l-caption-title">{{$work->title}}</div>--}}
+                            {{--<div class="cbp-l-caption-desc">{!! $work->intro !!}</div>--}}
+                            {{----}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--</a>--}}
+                            {{--</div>--}}
+
+                        @endforeach
+
+
+
+
+                    @endif
+
+
+
                 </div>
+                <div class="text-center">{{$works->links()}}</div>
+            </div>
+            {{--tab--}}
+            <div class="tab-content clearfix" id="tabs-2">
+
+                <div class="row">
+                    {{----}}
+                @if($posts->count())
+                    @foreach($posts as $post)
+                            <div class="col-md-6 bottommargin">
+
+                                <div class="team team-list clearfix">
+                                    <div class="team-image">
+                                        <a href="{{route('home.post',$post->id)}}">
+                                            <img src="{{$post->banner}}" >
+                                        </a>
+
+                                    </div>
+                                    <div class="team-desc">
+                                        <div class="team-title"><a href="{{route('home.post',$post->id)}}"><h4>{{$post->title}}</h4></a></div>
+                                        <div class="team-content">
+                                            <p></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            {{----}}
+                        @endforeach
+                    @else
+                    <h1>No result</h1>
+
+                    @endif
 
 
-                {{--<div class="cbp-item  {{$work->workscategories->id}} ">--}}
-                {{--<a href="{{url('/ajax-work-template/'.$work->id)}}" class="cbp-caption cbp-singlePageInline"  rel="nofollow">--}}
-                {{----}}
-                {{--<div class="cbp-caption-defaultWrap">--}}
-                {{--<img src="{{$work->banner}}" alt="">--}}
-                {{--</div>--}}
-                {{----}}
-
-                {{--<div class="cbp-caption-activeWrap">--}}
-                {{--<div class="cbp-l-caption-alignLeft">--}}
-                {{--<div class="cbp-l-caption-body">--}}
-                {{--<div class="cbp-l-caption-title">{{$work->title}}</div>--}}
-                {{--<div class="cbp-l-caption-desc">{!! $work->intro !!}</div>--}}
-                {{----}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--</a>--}}
-                {{--</div>--}}
-
-            @endforeach
 
 
 
 
-        @endif
+
+
+                </div>
+                 {{--row--}}
 
 
 
-    </div>
 
-    <div class="text-center load_more"><h3>Loading...</h3></div>
+            </div>
+            {{--tab-content--}}
 
-    {{--<div id="js-loadMore-lightbox-gallery" class="cbp-l-loadMore-button">--}}
-    {{--<a href="{{url('/ajax-work-template/'.$work->id)}}" class="cbp-l-loadMore-link" rel="nofollow">--}}
-    {{--<span class="cbp-l-loadMore-defaultText">LOAD MORE (<span class="cbp-l-loadMore-loadItems">4</span>)</span>--}}
-    {{--<span class="cbp-l-loadMore-loadingText">LOADING...</span>--}}
-    {{--<span class="cbp-l-loadMore-noMoreLoading">NO MORE WORKS</span>--}}
-    {{--</a>--}}
-    {{--</div>--}}
+
+            </div>
+        {{--tab-container--}}
+
+
+        </div>
+
+
+
+
 @stop
 
 @section('links')
 
-    {{$works->links()}}
+
 
 @stop
 
@@ -207,7 +243,22 @@
         {{--});--}}
     {{--</script>--}}
 
+    <script>
+        var $j = jQuery.noConflict();
+        $j(document).ready(function() {
+            $j('.tab-nav li a').click(function() {
 
+                console.log('mansory');
+                var container = $j('#portfolio');
+
+                container.imagesLoaded( function(){
+                    container.masonry({
+                        itemSelector : '.portfolio-item'
+                    });
+                });
+            })
+        });
+    </script>
 
 
 

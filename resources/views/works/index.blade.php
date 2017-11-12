@@ -1,5 +1,9 @@
 @extends('layouts.work_maintemplate')
 
+@section('title')
+    {{ config('app.name', 'Stray-design') }} | Portfolios
+@endsection
+
 @section('style')
     <style>
         .load_more{
@@ -187,8 +191,7 @@
                             $('.load_more').fadeIn('2000');
 
                             $.get(page,function(data){
-                                console.log(page);
-                                console.log(data.works);
+
                                $('#js-grid-lightbox-gallery').cubeportfolio('append',data.works);
 
                                $('#js-grid-lightbox-gallery').data('next-page',data.next_page);

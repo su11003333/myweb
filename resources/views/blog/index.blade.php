@@ -1,5 +1,9 @@
 @extends('layouts.post_maintemplate')
 
+@section('title')
+    {{ config('app.name', 'Stray-design') }} | Post
+@endsection
+
 @section('page_title')
     <section id="page-title">
 
@@ -60,7 +64,7 @@
 
                     @foreach($tags as $tag)
 
-                        <a href="#">{{$tag->name}}</a>
+                        <a href="">{{$tag->name}}</a>
                     {{--<a href="#">general</a>--}}
                     {{--<a href="#">information</a>--}}
                     {{--<a href="#">media</a>--}}

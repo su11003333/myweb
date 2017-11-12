@@ -148,6 +148,7 @@
         </div>
     </div>
 </div>
+
 <script>
 
     $('#ajax_work_slick').slick({

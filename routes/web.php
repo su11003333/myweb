@@ -34,6 +34,10 @@ Route::post('/get_in_touch',['as'=>'get_in_touch','uses'=>'welcomeController@sto
 
 Route::get('/search',['as'=>'search','uses'=>'SearchController@search']);
 
+Route::get('/search/category/{id}',['as'=>'search.category','uses'=>'SearchController@search_category']);
+
+Route::get('/search/tag/{id}',['as'=>'search.tag','uses'=>'SearchController@search_tag']);
+
 Route::get('/todos',[
 
     'uses'=>'TodosController@index'

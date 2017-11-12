@@ -235,15 +235,17 @@ class AdminPostsController extends Controller
 
         if($post->is_active == 1){
 
-            $postnext = Post::where('id','>',$post->id)->orderBy('id','asc')->first();
+            $postnext = Post::where('is_active','1')->where('id','>',$post->id)->orderBy('id','asc')->first();
 //
-            $postpre = Post::where('id', '<', $post->id)->orderBy('id','desc')->first();
+            $postpre = Post::where('is_active','1')->where('id', '<', $post->id)->orderBy('id','desc')->first();
+
+            $categories = Category::all();
 
             $tags = $post->tags()->get();
 
             $comments = $post->comments()->whereIsActive(1)->get();
 
-            return view('/blog/index',compact('post','comments','postnext','postpre','tags'));
+            return view('/blog/index',compact('post','comments','postnext','postpre','tags','categories'));
 
 //        return $postpre->title;
 
@@ -260,7 +262,11 @@ class AdminPostsController extends Controller
 
         $posts = Post::where('is_active','1')->paginate(10);
 
-        return view('/blog/home',compact('posts'));
+        $tags = Tag::all();
+
+        $categories = Category::all();
+
+        return view('/blog/home',compact('posts','categories', 'tags'));
 
 //        return $posts;
 

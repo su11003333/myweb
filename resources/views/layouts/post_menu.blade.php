@@ -145,10 +145,19 @@
                 <!-- Top Search
                 ============================================= -->
                 <div id="top-search">
+
+
+
+
+                    <div class="fa fa-search" id="search_submit" class=""></div>
+
+
+
                     <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-                    <form action="search.html" method="get">
-                        <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
-                    </form>
+                    {!! Form::open(['method'=>'Get','action'=>'SearchController@search','id'=>'searchkey']) !!}
+                        {!! Form::text('searchKey',null,['placeholder'=>' Type &amp; Hit Enter..','id'=>'searchword','class'=>'form-control']) !!}
+
+                    {!! Form::close() !!}
                 </div><!-- #top-search end -->
 
             </nav><!-- #primary-menu end -->

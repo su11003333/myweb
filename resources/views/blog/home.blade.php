@@ -1,5 +1,9 @@
 @extends('layouts.post_maintemplate')
 
+@section('title')
+    {{ config('app.name', 'Stray-design') }} | Posts
+@endsection
+
 @section('page_title')
     <section id="page-title">
 

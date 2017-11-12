@@ -1,5 +1,9 @@
 @extends('layouts.work_maintemplate')
 
+@section('title')
+    {{ config('app.name', 'Stray-design') }} | POrtfolio
+@endsection
+
 @section('page_title')
     <section id="page-title">
 
@@ -14,6 +18,7 @@
 
     </section>
 @endsection
+
 
 
 @section('content')
