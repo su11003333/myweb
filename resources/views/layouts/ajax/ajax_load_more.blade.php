@@ -3,7 +3,7 @@
     <div class="cbp-item {{$work->workscategories->id}}">
         <div class="cbp-caption">
             <div class="cbp-caption-defaultWrap">
-                <img src="{{$work->banner}}" alt="">
+                <img src="{{$work->thumbnail}}" alt="">
             </div>
             <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignCenter">

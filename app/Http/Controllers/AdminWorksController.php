@@ -103,7 +103,7 @@ class AdminWorksController extends Controller
 
 
 
-        Session::flash('message','The new Post has been created');
+        Session::flash('message','The new Work has been created');
 
         return redirect('/admin/works');
 
@@ -244,7 +244,7 @@ class AdminWorksController extends Controller
 
         $workscategories = Workscategories::all();
 
-        $works = Works::where('is_active','1')->orderBy('star','desc')->orderBy('updated_at','desc')->paginate(10);
+        $works = Works::where('is_active','1')->orderBy('star','desc')->orderBy('updated_at','desc')->paginate(5);
 
         if($request->ajax()){
             return [
@@ -297,11 +297,18 @@ class AdminWorksController extends Controller
 
         $workscategories = Workscategories::all();
 
+
+
 //        $works = Works::where('is_active','1')->orderBy('star','desc')->orderBy('updated_at','desc')->paginate(10);
         $work = Works::where('is_active','1')->findOrFail($id);
 
+        $workcategory_id = $work->workscategories_id;
 
-        return view('/works/single',compact('work','workscategories'));
+        $relateworks = Works::where('is_active','1')->where('workscategories_id',$workcategory_id)->where('id','!=',$id)->take(5)->get();
+
+
+
+        return view('/works/single',compact('work','workscategories', 'relateworks'));
 
 
     }

@@ -18,6 +18,7 @@ class CreateWorksTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('title');
             $table->string('company');
+            $table->string('thumbnail');
             $table->string('banner');
             $table->string('workscategories_id');
             $table->integer('is_active')->default(0);

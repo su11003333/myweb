@@ -46,7 +46,7 @@
 
 
                         {{--@else--}}
-                            <img height="50" src="{{$work->banner ? $work->banner  : 'http://placehold.it/400x400'}}" alt="" >
+                            <img height="50" src="{{$work->thumbnail ? $work->thumbnail  : 'http://placehold.it/400x400'}}" alt="" >
                         {{--@endif--}}
 
                     </td>

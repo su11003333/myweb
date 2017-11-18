@@ -336,7 +336,7 @@
                     <!-- Portfolio Items
                     ============================================= -->
                     <div id="portfolio" class="portfolio grid-container portfolio-nomargin portfolio-full portfolio-3 portfolio-masonry mixed-masonry clearfix " >
-
+                        @if($works->get(0))
                         <article class="portfolio-item pf-illustrations pf-icons wide">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
@@ -355,7 +355,8 @@
                                 </span>
                             </div>
                         </article>
-
+                        @endif
+                        @if($works->get(1))
                         <article class="portfolio-item pf-illustrations">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
@@ -372,7 +373,8 @@
                                     @endforeach</span>
                             </div>
                         </article>
-
+                            @endif
+                            @if($works->get(2))
                         <article class="portfolio-item pf-illustrations pf-uielements">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
@@ -389,9 +391,10 @@
                                     @endforeach</span>
                             </div>
                         </article>
+                            @endif
 
 
-
+                            @if($works->get(3))
                         <article class="portfolio-item pf-illustrations pf-icons wide">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
@@ -408,8 +411,9 @@
                                     @endforeach</span>
                             </div>
                         </article>
+                            @endif
 
-
+                            @if($works->get(4))
                         <article class="portfolio-item pf-illustrations pf-icons">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
@@ -426,7 +430,9 @@
                                     @endforeach</span>
                             </div>
                         </article>
+                            @endif
 
+                            @if($works->get(5))
                         <article class="portfolio-item pf-illustrations pf-icons">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
@@ -443,7 +449,9 @@
                                     @endforeach</span>
                             </div>
                         </article>
+                            @endif
 
+                            @if($works->get(6))
                         <article class="portfolio-item pf-illustrations pf-icons">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
@@ -460,7 +468,7 @@
                                     @endforeach</span>
                             </div>
                         </article>
-
+                            @endif
 
 
                     </div><!-- #portfolio end -->
@@ -521,38 +529,7 @@
 
                                     {!! Form::close() !!}
 
-                                {{--<form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">--}}
 
-                                    {{--<div class="form-process"></div>--}}
-
-                                    {{--<div class="col_half">--}}
-                                        {{--<input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control border-form-control required" placeholder="Name" />--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col_half col_last">--}}
-                                        {{--<input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control border-form-control" placeholder="Email Address" />--}}
-                                    {{--</div>--}}
-
-                                    {{--<div class="clear"></div>--}}
-
-                                    {{--<div class="col_full">--}}
-                                        {{--<input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control border-form-control" placeholder="Subject" />--}}
-                                    {{--</div>--}}
-
-                                    {{--<div class="col_full">--}}
-                                        {{--<textarea class="required sm-form-control border-form-control" id="template-contactform-message" name="template-contactform-message" rows="7" cols="30" placeholder="Your Message"></textarea>--}}
-                                    {{--</div>--}}
-
-                                    {{--<div class="col_full">--}}
-                                        {{--<button class="button button-black noleftmargin topmargin-sm" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Send Message</button>--}}
-                                    {{--</div>--}}
-
-                                    {{--<div class="clear"></div>--}}
-
-                                    {{--<div class="col_full hidden">--}}
-                                        {{--<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />--}}
-                                    {{--</div>--}}
-
-                                {{--</form>--}}
 
                             </div>
 

@@ -9,6 +9,10 @@
 @section('style')
     <link rel="stylesheet" href="/css/bootstrap-stars.css">
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/dropzone.min.css">
+    <!-- Date & Time Picker CSS -->
+    <link rel="stylesheet" href="/css/datepicker.css" type="text/css" />
+    <link rel="stylesheet" href="/css/timepicker.css" type="text/css" />
+    <link rel="stylesheet" href="/css/daterangepicker.css" type="text/css" />
 
 @stop
 
@@ -54,6 +58,13 @@
             </div>
 
             <div class="form-group">
+                {!! Form::label('date','Date') !!}
+                {!! Form::text('date',null,['class'=>'form-control tleft mnth']) !!}
+            </div>
+
+
+
+            <div class="form-group">
                 {!! Form::label('star','Stars') !!}
                 {!! Form::select('star',['1' => '1','2'=>'2','3'=>'3','4'=>'4','5'=>'5'],null,['class'=>'form-control  js-states','id'=>'stars']) !!}
             </div>
@@ -72,16 +83,32 @@
                 {!! Form::text('url', null, ['class'=>'form-control'])!!}
             </div>
 
+            <div class="form-group">
+                {!! Form::label('thumb', 'Thumbnail:') !!}
+                <div class="input-group" >
+               <span class="input-group-btn">
+                 <a id="lfm1" data-input="thumbnail" data-preview="holder1" class="btn btn-primary">
+                   <i class="fa fa-picture-o"></i> Choose
+                 </a>
+               </span>
+                    {!! Form::text('thumbnail', null,['class'=>'form-control ','id'=>'thumbnail'])!!}
+
+                </div>
+                <img id="holder1" style="margin-top:15px;max-height:100px;">
+
+
+            </div>
+
 
             <div class="form-group">
                 {!! Form::label('banner', 'Banner:') !!}
                 <div class="input-group" >
                <span class="input-group-btn">
-                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                 <a id="lfm" data-input="banner" data-preview="holder" class="btn btn-primary">
                    <i class="fa fa-picture-o"></i> Choose
                  </a>
                </span>
-                    {!! Form::text('banner', null,['class'=>'form-control ','id'=>'thumbnail'])!!}
+                    {!! Form::text('banner', null,['class'=>'form-control ','id'=>'banner'])!!}
 
                 </div>
                 <img id="holder" style="margin-top:15px;max-height:100px;">
@@ -185,6 +212,13 @@
     {{--});--}}
     {{--</script>--}}
     <script src="/js/jquery.barrating.min.js" type="text/javascript"></script>
+    <!-- Date & Time Picker JS -->
+    <script type="text/javascript" src="/js/moment.js"></script>
+    <script type="text/javascript" src="/js/datepicker.js"></script>
+    <script type="text/javascript" src="/js/timepicker.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="/js/daterangepicker.js"></script>
 
         <script type="text/javascript">
             $(function() {
@@ -194,6 +228,15 @@
             });
 
         </script>
+    <script>
+        $(function(){
+            $('.mnth').datepicker({
+                autoclose: true,
+                minViewMode: 1,
+                format: "mm/yyyy"
+            });
+        });
+    </script>
     <script>
 
 
@@ -219,6 +262,7 @@
     <script>
         var domain = "";
         $('#lfm').filemanager('image', {prefix: domain});
+        $('#lfm1').filemanager('image', {prefix: domain});
     </script>
     {{--<script>--}}
         {{--$('#lfm2').filemanager('image');--}}

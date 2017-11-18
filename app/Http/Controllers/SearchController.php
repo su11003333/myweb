@@ -18,9 +18,16 @@ class SearchController extends Controller
 
 //        $error = ['error' => 'No results found, please try with different keywords.'];
 
-        $works = Works::search($searchKey)->where('is_active','1')->orderBy('star','desc')->orderBy('updated_at','desc')->paginate('10');
+//        $works = Works::search($searchKey)->where('is_active','1')->orderBy('star','desc')->orderBy('updated_at','desc')->paginate('10');
 
-        $posts = Post::search($searchKey)->where('is_active','1')->orderBy('updated_at','desc')->paginate('10');
+//        $posts = Post::search($searchKey)->where('is_active','1')->orderBy('updated_at','desc')->paginate('10');
+        Works::where('is_active','0')->unsearchable();
+
+        Post::where('is_active','0')->unsearchable();
+
+        $works = Works::search($searchKey)->paginate('10');
+
+        $posts = Post::search($searchKey)->paginate('10');
 
         return view('search',compact('works','posts'));
 

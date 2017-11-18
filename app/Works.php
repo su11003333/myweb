@@ -12,7 +12,7 @@ class Works extends Model
 
     protected $fillable = [
 
-        'title','workscategories_id','user_id','company','intro','body','url','banner','star','like','date'
+        'title','workscategories_id','user_id','company','intro','body','url','banner','star','like','date','thumbnail'
 
     ];
 

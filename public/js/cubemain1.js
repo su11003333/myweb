@@ -14,12 +14,21 @@
         }, {
             width: 800,
             cols: 3,
+        },{
+            width: 600,
+            cols: 3,
         }, {
             width: 480,
+            cols: 2,
+            options: {
+                caption: '',
+            },
+        },{
+            width: 380,
             cols: 1,
             options: {
                 caption: '',
-            }
+            },
         }],
         defaultFilter: '*',
         animationType: 'flipOutDelay',

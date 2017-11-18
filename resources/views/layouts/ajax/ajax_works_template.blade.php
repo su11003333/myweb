@@ -6,6 +6,22 @@
     /*.slider .slider-wrapper{*/
         /*height:60px;*/
     /*}*/
+    .slick-next:before{
+          content:'▶';
+      }
+    .slick-prev:before{
+        content:'◀'
+    }
+    .slick-next{
+        right:10px;
+    }
+    .slick-prev{
+        left:10px;
+    }
+    .slick-arrow{
+
+        z-index: 999999;
+    }
 
     #ajax_work_slick video{
         width:100%;
@@ -68,32 +84,32 @@
         </div>
 
 {{----}}
-        @if(count($work->worksfeatures)>0)
-            <div class="lazy slider" id="ajax_work_slick_nav">
-                @if($work->workscategories->name == "影片")
-                    <div class="slider-wrapper">
-                        <div >
-                            <iframe width="100%" height="315" src="{{$work->url}}" frameborder="0" allowfullscreen></iframe>
+        {{--@if(count($work->worksfeatures)>0)--}}
+            {{--<div class="lazy slider" id="ajax_work_slick_nav">--}}
+                {{--@if($work->workscategories->name == "影片")--}}
+                    {{--<div class="slider-wrapper">--}}
+                        {{--<div >--}}
+                            {{--<iframe width="100%" height="315" src="{{$work->url}}" frameborder="0" allowfullscreen></iframe>--}}
 
-                        </div>
+                        {{--</div>--}}
 
-                    </div>
-                @else
-                    <div class="slider-wrapper">
-                        <img src="{{$work->banner}}" alt="">
-                    </div>
-                @endif
+                    {{--</div>--}}
+                {{--@else--}}
+                    {{--<div class="slider-wrapper">--}}
+                        {{--<img src="{{$work->banner}}" alt="">--}}
+                    {{--</div>--}}
+                {{--@endif--}}
 
 
 
-                @foreach($work->worksfeatures as $feature)
-                    <div class="slider-wrapper">
-                        <img src="{{$feature->path}}" alt="">
-                    </div>
+                {{--@foreach($work->worksfeatures as $feature)--}}
+                    {{--<div class="slider-wrapper">--}}
+                        {{--<img src="{{$feature->path}}" alt="">--}}
+                    {{--</div>--}}
 
-                @endforeach
-            </div>
-        @endif
+                {{--@endforeach--}}
+            {{--</div>--}}
+        {{--@endif--}}
 {{----}}
 
 
@@ -156,20 +172,22 @@
         autoPlay:true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false,
+        arrows: true,
         fade: true,
-        asNavFor: '#ajax_work_slick_nav',
+        dots:true,
+
+//        asNavFor: '#ajax_work_slick_nav',
 //        adaptiveHeight: true
     });
-    $('#ajax_work_slick_nav').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        asNavFor: '#ajax_work_slick',
-        dots: true,
-        centerMode: true,
-        focusOnSelect: true,
-//        variableWidth: true
-    });
+//    $('#ajax_work_slick_nav').slick({
+//        slidesToShow: 3,
+//        slidesToScroll: 1,
+//        asNavFor: '#ajax_work_slick',
+//        dots: true,
+//        centerMode: true,
+//        focusOnSelect: true,
+////        variableWidth: true
+//    });
 </script>
 
 

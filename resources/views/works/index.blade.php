@@ -1,7 +1,7 @@
 @extends('layouts.work_maintemplate')
 
 @section('title')
-    {{ config('app.name', 'Stray-design') }} | Portfolios
+    {{ config('app.name', 'Stray-design') }} | POrtfolio
 @endsection
 
 @section('style')
@@ -101,7 +101,7 @@
                 <div class="cbp-item {{$work->workscategories->id}}">
                     <div class="cbp-caption">
                         <div class="cbp-caption-defaultWrap">
-                            <img src="{{$work->banner}}" alt="">
+                            <img src="{{$work->thumbnail}}" alt="">
                         </div>
                         <div class="cbp-caption-activeWrap">
                             <div class="cbp-l-caption-alignCenter">
@@ -187,7 +187,7 @@
                             actualScrolledHeight = currentScrollPosition + window.innerHeight;
 
 
-                        if(actualScrolledHeight >= contentHeight){
+                        if(actualScrolledHeight > contentHeight){
                             $('.load_more').fadeIn('2000');
 
                             $.get(page,function(data){
@@ -195,7 +195,7 @@
                                $('#js-grid-lightbox-gallery').cubeportfolio('append',data.works);
 
                                $('#js-grid-lightbox-gallery').data('next-page',data.next_page);
-                               $('.load_more').fadeOut('2000');
+                               $('.load_more').fadeOut('3000');
 
 //
 

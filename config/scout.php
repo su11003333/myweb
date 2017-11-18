@@ -73,7 +73,7 @@ return [
     'algolia' => [
         'id' => env('ALGOLIA_APP_ID', 'TMPRPKAT67'),
         'secret' => env('ALGOLIA_SECRET', '4a85988ad8c9dd2c7c28a2a443ad3035'),
-        'search' => env('ALGOLIA_SEARCH', 'aa204befa423197615c753834bce5e3d'),
+
     ],
 
 ];
