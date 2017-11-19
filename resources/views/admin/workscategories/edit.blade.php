@@ -43,20 +43,26 @@
                         {!! Form::label('name','Name:') !!}
                         {!! Form::text('name',null, ['class'=>'form-control']) !!}
                     </div>
+                    @if (Route::has('login'))
+                        @if (Auth::user()->isAdmin())
+                            {!! Form::submit('Update Works Categories', ['class'=>'btn btn-primary col-sm-6']) !!}
 
 
-                    {!! Form::submit('Update Works Categories', ['class'=>'btn btn-primary col-sm-6']) !!}
+                            {!! Form::close() !!}
 
 
-                    {!! Form::close() !!}
+                            {!! Form::open(['method'=>'DELETE','action'=>['AdminWorkscategoriesController@destroy',$workscategory->id]]) !!}
 
 
-                    {!! Form::open(['method'=>'DELETE','action'=>['AdminWorkscategoriesController@destroy',$workscategory->id]]) !!}
+                            {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}
 
+                            {!! Form::close() !!}
+                            !!}
+                        @else
+                            <div class="btn btn-danger">Guest cannot pass!</div>
+                        @endif
+                    @endif
 
-                    {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}
-
-                    {!! Form::close() !!}
 
                 </div>
             </div>

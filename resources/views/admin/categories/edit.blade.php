@@ -44,7 +44,8 @@
                             {!! Form::text('name',null, ['class'=>'form-control']) !!}
                         </div>
 
-
+                    @if (Route::has('login'))
+                        @if (Auth::user()->isAdmin())
                             {!! Form::submit('Update Categories', ['class'=>'btn btn-primary col-sm-6']) !!}
 
 
@@ -54,9 +55,14 @@
                             {!! Form::open(['method'=>'DELETE', 'action'=> ['AdminCategoriesController@destroy', $category->id]]) !!}
 
 
-                                    {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}
+                            {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}
 
                             {!! Form::close() !!}
+                        @else
+                            <div class="btn btn-danger">Guest cannot pass!</div>
+                        @endif
+                    @endif
+
 
                 </div>
             </div>
@@ -92,11 +98,18 @@
                         {!! Form::text('name',null, ['class'=>'form-control']) !!}
                     </div>
 
+                    @if (Route::has('login'))
+                        @if (Auth::user()->isAdmin())
+                            {!! Form::submit('Create SubCategories', ['class'=>'btn btn-primary col-sm-6']) !!}
 
-                    {!! Form::submit('Create SubCategories', ['class'=>'btn btn-primary col-sm-6']) !!}
+
+                            {!! Form::close() !!}
+                        @else
+                            <div class="btn btn-danger">Guest cannot pass!</div>
+                        @endif
+                    @endif
 
 
-                    {!! Form::close() !!}
 
 
 

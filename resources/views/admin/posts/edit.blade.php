@@ -150,16 +150,31 @@
 
 
             <div class="form-group">
-                {!! Form::submit('Update Posts', ['class'=>'btn btn-primary']) !!}
-                {!! Form::close() !!}
+
+                @if (Route::has('login'))
+                    @if (Auth::user()->isAdmin())
+                        {!! Form::submit('Update Posts', ['class'=>'btn btn-primary']) !!}
+                        {!! Form::close() !!}
+                    @else
+                        <div class="btn btn-danger">Guest cannot pass!</div>
+                    @endif
+                @endif
+
             </div>
 
 
 
             <div class="form-group">
-                {!! Form::open(['method'=>'DELETE','action'=>['AdminPostsController@destroy',$post->id],'class'=>'delete_confirm']) !!}
-                {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
-                {!! Form::close() !!}
+                @if (Route::has('login'))
+                    @if (Auth::user()->isAdmin())
+                        {!! Form::open(['method'=>'DELETE','action'=>['AdminPostsController@destroy',$post->id],'class'=>'delete_confirm']) !!}
+                        {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                        {!! Form::close() !!}
+                    @else
+                        <div class="btn btn-danger">Guest cannot pass!</div>
+                    @endif
+                @endif
+
             </div>
 
         </div>

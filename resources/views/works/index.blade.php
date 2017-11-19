@@ -54,6 +54,7 @@
         <div class="container clearfix">
             <h1>Portfolio</h1>
             <span>Showcase of Our Awesome Works</span>
+            <span>{{ Counter::count('work_home') }}</span>
             {{--<ol class="breadcrumb">--}}
             {{--<li><a href="#">Home</a></li>--}}
             {{--<li class="active">Portfolio</li>--}}

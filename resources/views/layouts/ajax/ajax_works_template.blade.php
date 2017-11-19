@@ -123,7 +123,7 @@
             <li><strong>Client</strong>{{$work->company}}</li>
             <li><strong>Date</strong>{{$work->date}}</li>
             @if(count($work->workstags)>0)
-                <li><strong>Categories</strong>
+                <li><strong>Tags</strong>
                     @foreach($work->workstags as $tags)
                         <span class="tags-style">{{$tags->name}}</span>
                     @endforeach

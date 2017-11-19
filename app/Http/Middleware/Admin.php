@@ -23,6 +23,8 @@ class Admin
 
                 return $next($request);
 
+            }elseif (Auth::user()->isGuest()){
+                return $next($request);
             }
 
         }

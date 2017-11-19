@@ -56,6 +56,19 @@ class User extends Authenticatable
 
     }
 
+    public function isGuest(){
+
+
+        if($this->role->name == "guest" && $this->is_active == 1){
+
+            return true;
+
+        }
+
+        return false;
+
+    }
+
     public function posts(){
 
         return $this->hasMany('App\Post');

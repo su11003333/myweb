@@ -69,7 +69,10 @@
                 {!! Form::select('star',['1' => '1','2'=>'2','3'=>'3','4'=>'4','5'=>'5'],null,['class'=>'form-control  js-states','id'=>'stars']) !!}
             </div>
 
-
+            <div class="form-group">
+                {!! Form::label('url', 'URL:') !!}
+                {!! Form::text('url', null, ['class'=>'form-control'])!!}
+            </div>
 
 
 
@@ -78,10 +81,7 @@
 
         <div class="col-sm-6">
 
-            <div class="form-group">
-                {!! Form::label('url', 'URL:') !!}
-                {!! Form::text('url', null, ['class'=>'form-control'])!!}
-            </div>
+
 
             <div class="form-group">
                 {!! Form::label('thumb', 'Thumbnail:') !!}
@@ -168,9 +168,17 @@
 
     <div class="col-sm-12 text-center">
 
-        <div class="form-group">
-            {!! Form::submit('Create Work', ['class'=>'btn btn-primary ']) !!}
-        </div>
+        @if (Route::has('login'))
+            @if (Auth::user()->isAdmin())
+                <div class="form-group">
+                    {!! Form::submit('Create Work', ['class'=>'btn btn-primary ']) !!}
+                </div>
+            @else
+                <div class="btn btn-danger">Guest cannot pass!</div>
+            @endif
+        @endif
+
+
 
 
     </div>

@@ -182,7 +182,8 @@ return [
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
-        Basemkhirat\Elasticsearch\ElasticsearchServiceProvider::class
+        Basemkhirat\Elasticsearch\ElasticsearchServiceProvider::class,
+        Kryptonit3\Counter\CounterServiceProvider::class,
 
     ],
 
@@ -236,7 +237,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
-        'ES' => Basemkhirat\Elasticsearch\Facades\ES::class
+        'ES' => Basemkhirat\Elasticsearch\Facades\ES::class,
+        'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
 
     ],
 

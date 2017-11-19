@@ -42,6 +42,7 @@
         <div class="container clearfix">
             <h1>Portfolio</h1>
             <span>Showcase of Our Awesome Works</span>
+            <span>{{ Counter::count('work_single') }}</span>
             {{--<ol class="breadcrumb">--}}
             {{--<li><a href="#">Home</a></li>--}}
             {{--<li class="active">Portfolio</li>--}}
@@ -176,8 +177,11 @@
                             </div>
                         </div>
                         <div class="portfolio-desc">
-                            <h3><a href="portfolio-single.html">Open Imagination</a></h3>
-                            <span><a href="#">Media</a>, <a href="#">Icons</a></span>
+                            <h3><a href="{{route('home.work',$relatework->id)}}">{{$relatework->title}}</a></h3>
+                            @if(count($relatework->workstags))
+                                <span><a href="{{route('search.tag',$relatework->id)}}">{!! $relatework->intro !!}</a>
+                            @endif
+
                         </div>
                     </div>
                 </div>

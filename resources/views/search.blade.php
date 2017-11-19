@@ -1,6 +1,7 @@
 @extends('layouts.work_maintemplate')
 
 @section('style')
+    {{ Counter::count('search') }}
     <style>
         .load_more{
             height: 100vh;

@@ -44,19 +44,25 @@
                         {!! Form::text('name',null, ['class'=>'form-control']) !!}
                     </div>
 
-
-                    {!! Form::submit('Update Tag', ['class'=>'btn btn-primary col-sm-6']) !!}
-
-
-                    {!! Form::close() !!}
+                    @if (Route::has('login'))
+                        @if (Auth::user()->isAdmin())
+                            {!! Form::submit('Update Tag', ['class'=>'btn btn-primary col-sm-6']) !!}
 
 
-                    {!! Form::open(['method'=>'DELETE', 'action'=> ['AdminTagsController@destroy', $tag->id]]) !!}
+                            {!! Form::close() !!}
 
 
-                    {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}
+                            {!! Form::open(['method'=>'DELETE', 'action'=> ['AdminTagsController@destroy', $tag->id]]) !!}
 
-                    {!! Form::close() !!}
+
+                            {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}
+
+                            {!! Form::close() !!}
+                        @else
+                            <div class="btn btn-danger">Guest cannot pass!</div>
+                        @endif
+                    @endif
+
 
                 </div>
             </div>

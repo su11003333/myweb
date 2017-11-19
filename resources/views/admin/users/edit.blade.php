@@ -83,18 +83,30 @@
                     <div class="col-lg-6 col-lg-offset-4 col-sm-6">
 
                             <div class="col-lg-3 col-sm-6 ">
+                                @if (Route::has('login'))
+                                    @if (Auth::user()->isAdmin())
+                                        {!! Form::submit('Update Users', ['class'=>'btn btn-primary']) !!}
+                                        {!! Form::close() !!}
+                                    @else
+                                        <div class="btn btn-danger">Guest cannot pass!</div>
+                                    @endif
+                                @endif
 
-                                {!! Form::submit('Update Users', ['class'=>'btn btn-primary']) !!}
-                                {!! Form::close() !!}
 
                             </div>
 
 
                             <div class="col-lg-3 col-sm-6">
+                                @if (Route::has('login'))
+                                    @if (Auth::user()->isAdmin())
+                                        {!! Form::open(['method'=>'DELETE','action'=>['AdminUsersController@destroy',$user->id],'class'=>'delete_confirm']) !!}
+                                        {!! Form::submit('Delete Users', ['class'=>'btn btn-danger']) !!}
+                                        {!! Form::close() !!}
+                                    @else
+                                        <div class="btn btn-danger">Guest cannot pass!</div>
+                                    @endif
+                                @endif
 
-                                {!! Form::open(['method'=>'DELETE','action'=>['AdminUsersController@destroy',$user->id],'class'=>'delete_confirm']) !!}
-                                {!! Form::submit('Delete Users', ['class'=>'btn btn-danger']) !!}
-                                {!! Form::close() !!}
 
                             </div>
 

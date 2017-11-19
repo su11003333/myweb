@@ -43,7 +43,14 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::submit('Create Tags', ['class'=>'btn btn-primary']) !!}
+                        @if (Route::has('login'))
+                            @if (Auth::user()->isAdmin())
+                                {!! Form::submit('Create Tags', ['class'=>'btn btn-primary']) !!}
+                            @else
+                                <div class="btn btn-danger">Guest cannot pass!</div>
+                            @endif
+                        @endif
+
                     </div>
 
                     {!! Form::close() !!}
@@ -94,10 +101,17 @@
                                     <td><a href="{{action('AdminWorkstagsController@edit',$workstag->id)}}" class="">{{$workstag->name}}</a></td>
                                     {{--<td>{{$tag->created_at?$tag->created_at:"No date"}}</td>--}}
                                     <td>
+                                        @if (Route::has('login'))
+                                            @if (Auth::user()->isAdmin())
+                                                {!! Form::open(['method'=>'DELETE','action'=>['AdminWorkstagsController@destroy',$workstag->id],'class'=>'delete_confirm']) !!}
+                                                {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                                                {!! Form::close() !!}
+                                            @else
+                                                <div class="btn btn-danger">Guest cannot pass!</div>
+                                            @endif
+                                        @endif
 
-                                        {!! Form::open(['method'=>'DELETE','action'=>['AdminWorkstagsController@destroy',$workstag->id],'class'=>'delete_confirm']) !!}
-                                        {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
-                                        {!! Form::close() !!}
+
 
                                     </td>
                                 </tr>

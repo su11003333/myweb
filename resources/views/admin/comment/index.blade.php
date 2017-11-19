@@ -44,7 +44,14 @@
                                 <input type="hidden" value="0" name="is_active">
 
                                     <div class="form-group">
-                                        {!! Form::submit('Un-approve', ['class'=>'btn btn-primary']) !!}
+                                        @if (Route::has('login'))
+                                            @if (Auth::user()->isAdmin())
+                                                {!! Form::submit('Un-approve', ['class'=>'btn btn-primary']) !!}
+                                            @else
+                                                <div class="btn btn-danger">Guest cannot pass!</div>
+                                            @endif
+                                        @endif
+
                                     </div>
 
                                     {!! Form::close() !!}
@@ -59,7 +66,15 @@
                                 <input type="hidden" value="1" name="is_active">
 
                                 <div class="form-group">
-                                    {!! Form::submit('Approve', ['class'=>'btn btn-danger']) !!}
+                                    @if (Route::has('login'))
+                                        @if (Auth::user()->isAdmin())
+                                            {!! Form::submit('Approve', ['class'=>'btn btn-danger']) !!}
+                                        @else
+                                            <div class="btn btn-danger">Guest cannot pass!</div>
+                                        @endif
+                                    @endif
+
+
                                 </div>
 
                                 {!! Form::close() !!}

@@ -25,6 +25,16 @@
 
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46014653-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-46014653-3');
+    </script>
+
     <style>
 
         .SearchBar {
@@ -95,6 +105,7 @@
     <!-- Document Title
     ============================================= -->
     <title>{{ config('app.name', 'Stray-design') }}</title>
+    {{ Counter::count('welcome') }}
 
 </head>
 
@@ -340,7 +351,7 @@
                         <article class="portfolio-item pf-illustrations pf-icons wide">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
-                                    <img src="{{$works->get(0)->banner}}" alt="Open Imagination">
+                                    <img src="{{$works->get(0)->thumbnail}}" alt="Open Imagination">
                                 </a>
                                 <div class="i-overlay on-hover" style="background: rgba(255,255,255,0.7);">
                                     <a href="#"><i class="icon-line-plus"></i></a>
@@ -360,7 +371,7 @@
                         <article class="portfolio-item pf-illustrations">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
-                                    <img src="{{$works->get(1)->banner}}" alt="Locked Steel Gate">
+                                    <img src="{{$works->get(1)->thumbnail}}" alt="Locked Steel Gate">
                                 </a>
                                 <div class="i-overlay on-hover" style="background: rgba(255,255,255,0.7);">
                                     <a href="#"><i class="icon-line-plus"></i></a>
@@ -378,7 +389,7 @@
                         <article class="portfolio-item pf-illustrations pf-uielements">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
-                                    <img src="{{$works->get(2)->banner}}" alt="Mac Sunglasses">
+                                    <img src="{{$works->get(2)->thumbnail}}" alt="Mac Sunglasses">
                                 </a>
                                 <div class="i-overlay on-hover" style="background: rgba(255,255,255,0.7);">
                                     <a href="#"><i class="icon-line-plus"></i></a>
@@ -398,7 +409,7 @@
                         <article class="portfolio-item pf-illustrations pf-icons wide">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
-                                    <img src="{{$works->get(3)->banner}}" alt="Open Imagination">
+                                    <img src="{{$works->get(3)->thumbnail}}" alt="Open Imagination">
                                 </a>
                                 <div class="i-overlay on-hover" style="background: rgba(255,255,255,0.7);">
                                     <a href="#"><i class="icon-line-plus"></i></a>
@@ -417,7 +428,7 @@
                         <article class="portfolio-item pf-illustrations pf-icons">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
-                                    <img src="{{$works->get(4)->banner}}" alt="Backpack Contents">
+                                    <img src="{{$works->get(4)->thumbnail}}" alt="Backpack Contents">
                                 </a>
                                 <div class="i-overlay on-hover" style="background: rgba(255,255,255,0.7);">
                                     <a href="#"><i class="icon-line-plus"></i></a>
@@ -436,7 +447,7 @@
                         <article class="portfolio-item pf-illustrations pf-icons">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
-                                    <img src="{{$works->get(5)->banner}}" alt="Open Imagination">
+                                    <img src="{{$works->get(5)->thumbnail}}" alt="Open Imagination">
                                 </a>
                                 <div class="i-overlay on-hover" style="background: rgba(255,255,255,0.7);">
                                     <a href="#"><i class="icon-line-plus"></i></a>
@@ -455,7 +466,7 @@
                         <article class="portfolio-item pf-illustrations pf-icons">
                             <div class="portfolio-image imagescale">
                                 <a href="#">
-                                    <img src="{{$works->get(6)->banner}}" alt="Backpack Contents">
+                                    <img src="{{$works->get(6)->thumbnail}}" alt="Backpack Contents">
                                 </a>
                                 <div class="i-overlay on-hover" style="background: rgba(255,255,255,0.7);">
                                     <a href="#"><i class="icon-line-plus"></i></a>

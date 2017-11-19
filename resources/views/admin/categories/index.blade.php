@@ -43,7 +43,14 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::submit('Create Categories', ['class'=>'btn btn-primary']) !!}
+                            @if (Route::has('login'))
+                                @if (Auth::user()->isAdmin())
+                                    {!! Form::submit('Create Categories', ['class'=>'btn btn-primary']) !!}
+                                @else
+                                    <div class="btn btn-danger">Guest cannot pass!</div>
+                                @endif
+                            @endif
+
                         </div>
 
                         {!! Form::close() !!}
