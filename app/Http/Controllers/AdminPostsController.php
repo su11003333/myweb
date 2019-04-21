@@ -241,11 +241,13 @@ class AdminPostsController extends Controller
 
             $categories = Category::all();
 
-            $tags = $post->tags()->get();
+            $tags = Tag::all();
+
+            $posttags = $post->tags()->get();
 
             $comments = $post->comments()->whereIsActive(1)->get();
 
-            return view('/blog/index',compact('post','comments','postnext','postpre','tags','categories'));
+            return view('/blog/index',compact('post','comments','postnext','postpre','tags','categories','posttags'));
 
 //        return $postpre->title;
 

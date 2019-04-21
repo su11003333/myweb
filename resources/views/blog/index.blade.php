@@ -9,7 +9,7 @@
 
         <div class="container clearfix">
             <h1>Posts</h1>
-            <span>Showcase of Our Awesome Works</span>
+
             {{--<ol class="breadcrumb">--}}
             {{--<li><a href="#">Home</a></li>--}}
             {{--<li class="active">Portfolio</li>--}}
@@ -37,10 +37,10 @@
             ============================================= -->
             <ul class="entry-meta clearfix">
                 <li><i class="icon-calendar3"></i> {{$post->created_at->diffForHumans()}}</li>
-                <li><a href="#"><i class="icon-user"></i>{{$post->user->name}}</a></li>
-                <li><i class="icon-folder-open"></i> <a href="#">General</a>, <a href="#">Media</a></li>
-                <li><a href="#"><i class="icon-comments"></i> 43 Comments</a></li>
-                <li><a href="#"><i class="icon-camera-retro"></i></a></li>
+                {{--<li><a href="#"><i class="icon-user"></i>{{$post->user->name}}</a></li>--}}
+                {{--<li><i class="icon-folder-open"></i> <a href="#">General</a>, <a href="#">Media</a></li>--}}
+                {{--<li><a href="#"><i class="icon-comments"></i> 43 Comments</a></li>--}}
+                {{--<li><a href="#"><i class="icon-camera-retro"></i></a></li>--}}
             </ul><!-- .entry-meta end -->
 
             <!-- Entry Image
@@ -59,12 +59,12 @@
                 <!-- Tag Cloud
                 ============================================= -->
 
-                    @if($post->tags)
+                    @if($posttags->count())
                 <div class="tagcloud clearfix bottommargin">
 
-                    @foreach($tags as $tag)
+                    @foreach($posttags as $posttag)
 
-                        <a href="">{{$tag->name}}</a>
+                        <a href="">{{$posttag->name}}</a>
                     {{--<a href="#">general</a>--}}
                     {{--<a href="#">information</a>--}}
                     {{--<a href="#">media</a>--}}
@@ -78,35 +78,35 @@
 
                 <!-- Post Single - Share
                 ============================================= -->
-                <div class="si-share noborder clearfix">
-                    <span>Share this Post:</span>
-                    <div>
-                        <a href="#" class="social-icon si-borderless si-facebook">
-                            <i class="icon-facebook"></i>
-                            <i class="icon-facebook"></i>
-                        </a>
-                        <a href="#" class="social-icon si-borderless si-twitter">
-                            <i class="icon-twitter"></i>
-                            <i class="icon-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon si-borderless si-pinterest">
-                            <i class="icon-pinterest"></i>
-                            <i class="icon-pinterest"></i>
-                        </a>
-                        <a href="#" class="social-icon si-borderless si-gplus">
-                            <i class="icon-gplus"></i>
-                            <i class="icon-gplus"></i>
-                        </a>
-                        <a href="#" class="social-icon si-borderless si-rss">
-                            <i class="icon-rss"></i>
-                            <i class="icon-rss"></i>
-                        </a>
-                        <a href="#" class="social-icon si-borderless si-email3">
-                            <i class="icon-email3"></i>
-                            <i class="icon-email3"></i>
-                        </a>
-                    </div>
-                </div><!-- Post Single - Share End -->
+                {{--<div class="si-share noborder clearfix">--}}
+                    {{--<span>Share this Post:</span>--}}
+                    {{--<div>--}}
+                        {{--<a href="#" class="social-icon si-borderless si-facebook">--}}
+                            {{--<i class="icon-facebook"></i>--}}
+                            {{--<i class="icon-facebook"></i>--}}
+                        {{--</a>--}}
+                        {{--<a href="#" class="social-icon si-borderless si-twitter">--}}
+                            {{--<i class="icon-twitter"></i>--}}
+                            {{--<i class="icon-twitter"></i>--}}
+                        {{--</a>--}}
+                        {{--<a href="#" class="social-icon si-borderless si-pinterest">--}}
+                            {{--<i class="icon-pinterest"></i>--}}
+                            {{--<i class="icon-pinterest"></i>--}}
+                        {{--</a>--}}
+                        {{--<a href="#" class="social-icon si-borderless si-gplus">--}}
+                            {{--<i class="icon-gplus"></i>--}}
+                            {{--<i class="icon-gplus"></i>--}}
+                        {{--</a>--}}
+                        {{--<a href="#" class="social-icon si-borderless si-rss">--}}
+                            {{--<i class="icon-rss"></i>--}}
+                            {{--<i class="icon-rss"></i>--}}
+                        {{--</a>--}}
+                        {{--<a href="#" class="social-icon si-borderless si-email3">--}}
+                            {{--<i class="icon-email3"></i>--}}
+                            {{--<i class="icon-email3"></i>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
+                {{--</div><!-- Post Single - Share End -->--}}
 
             </div>
         </div><!-- .entry end -->
@@ -163,85 +163,85 @@
         ============================================= -->
 
 
-        <div class="line"></div>
+        {{--<div class="line"></div>--}}
 
-        <h4>Related Posts:</h4>
+        {{--<h4>Related Posts:</h4>--}}
 
-        <div class="related-posts clearfix">
+        {{--<div class="related-posts clearfix">--}}
 
-            <div class="col_half nobottommargin">
+            {{--<div class="col_half nobottommargin">--}}
 
-                <div class="mpost clearfix">
-                    <div class="entry-image">
-                        <a href="#"><img src="{{asset('./images/blog/small/10.jpg')}}" alt="Blog Single"></a>
-                    </div>
-                    <div class="entry-c">
-                        <div class="entry-title">
-                            <h4><a href="#">This is an Image Post</a></h4>
-                        </div>
-                        <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i> 10th July 2014</li>
-                            <li><a href="#"><i class="icon-comments"></i> 12</a></li>
-                        </ul>
-                        <div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                    </div>
-                </div>
+                {{--<div class="mpost clearfix">--}}
+                    {{--<div class="entry-image">--}}
+                        {{--<a href="#"><img src="{{asset('./images/blog/small/10.jpg')}}" alt="Blog Single"></a>--}}
+                    {{--</div>--}}
+                    {{--<div class="entry-c">--}}
+                        {{--<div class="entry-title">--}}
+                            {{--<h4><a href="#">This is an Image Post</a></h4>--}}
+                        {{--</div>--}}
+                        {{--<ul class="entry-meta clearfix">--}}
+                            {{--<li><i class="icon-calendar3"></i> 10th July 2014</li>--}}
+                            {{--<li><a href="#"><i class="icon-comments"></i> 12</a></li>--}}
+                        {{--</ul>--}}
+                        {{--<div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-                <div class="mpost clearfix">
-                    <div class="entry-image">
-                        <a href="#"><img src="{{asset('./images/blog/small/20.jpg')}}" alt="Blog Single"></a>
-                    </div>
-                    <div class="entry-c">
-                        <div class="entry-title">
-                            <h4><a href="#">This is a Video Post</a></h4>
-                        </div>
-                        <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i> 24th July 2014</li>
-                            <li><a href="#"><i class="icon-comments"></i> 16</a></li>
-                        </ul>
-                        <div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                    </div>
-                </div>
+                {{--<div class="mpost clearfix">--}}
+                    {{--<div class="entry-image">--}}
+                        {{--<a href="#"><img src="{{asset('./images/blog/small/20.jpg')}}" alt="Blog Single"></a>--}}
+                    {{--</div>--}}
+                    {{--<div class="entry-c">--}}
+                        {{--<div class="entry-title">--}}
+                            {{--<h4><a href="#">This is a Video Post</a></h4>--}}
+                        {{--</div>--}}
+                        {{--<ul class="entry-meta clearfix">--}}
+                            {{--<li><i class="icon-calendar3"></i> 24th July 2014</li>--}}
+                            {{--<li><a href="#"><i class="icon-comments"></i> 16</a></li>--}}
+                        {{--</ul>--}}
+                        {{--<div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-            </div>
+            {{--</div>--}}
 
-            <div class="col_half nobottommargin col_last">
+            {{--<div class="col_half nobottommargin col_last">--}}
 
-                <div class="mpost clearfix">
-                    <div class="entry-image">
-                        <a href="#"><img src="{{asset('./images/blog/small/21.jpg')}}" alt="Blog Single"></a>
-                    </div>
-                    <div class="entry-c">
-                        <div class="entry-title">
-                            <h4><a href="#">This is a Gallery Post</a></h4>
-                        </div>
-                        <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i> 8th Aug 2014</li>
-                            <li><a href="#"><i class="icon-comments"></i> 8</a></li>
-                        </ul>
-                        <div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                    </div>
-                </div>
+                {{--<div class="mpost clearfix">--}}
+                    {{--<div class="entry-image">--}}
+                        {{--<a href="#"><img src="{{asset('./images/blog/small/21.jpg')}}" alt="Blog Single"></a>--}}
+                    {{--</div>--}}
+                    {{--<div class="entry-c">--}}
+                        {{--<div class="entry-title">--}}
+                            {{--<h4><a href="#">This is a Gallery Post</a></h4>--}}
+                        {{--</div>--}}
+                        {{--<ul class="entry-meta clearfix">--}}
+                            {{--<li><i class="icon-calendar3"></i> 8th Aug 2014</li>--}}
+                            {{--<li><a href="#"><i class="icon-comments"></i> 8</a></li>--}}
+                        {{--</ul>--}}
+                        {{--<div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-                <div class="mpost clearfix">
-                    <div class="entry-image">
-                        <a href="#"><img src="{{asset('./images/blog/small/22.jpg')}}" alt="Blog Single"></a>
-                    </div>
-                    <div class="entry-c">
-                        <div class="entry-title">
-                            <h4><a href="#">This is an Audio Post</a></h4>
-                        </div>
-                        <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i> 22nd Aug 2014</li>
-                            <li><a href="#"><i class="icon-comments"></i> 21</a></li>
-                        </ul>
-                        <div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                    </div>
-                </div>
+                {{--<div class="mpost clearfix">--}}
+                    {{--<div class="entry-image">--}}
+                        {{--<a href="#"><img src="{{asset('./images/blog/small/22.jpg')}}" alt="Blog Single"></a>--}}
+                    {{--</div>--}}
+                    {{--<div class="entry-c">--}}
+                        {{--<div class="entry-title">--}}
+                            {{--<h4><a href="#">This is an Audio Post</a></h4>--}}
+                        {{--</div>--}}
+                        {{--<ul class="entry-meta clearfix">--}}
+                            {{--<li><i class="icon-calendar3"></i> 22nd Aug 2014</li>--}}
+                            {{--<li><a href="#"><i class="icon-comments"></i> 21</a></li>--}}
+                        {{--</ul>--}}
+                        {{--<div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-            </div>
+            {{--</div>--}}
 
-        </div>
+        {{--</div>--}}
 
         <!-- Comments
         ============================================= -->

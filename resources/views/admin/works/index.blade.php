@@ -2,7 +2,7 @@
 
 
 @section('title')
-    <h1>All Works <span class="badge bg-green">{{$works->count()}}</span></h1>
+    <h1>All Works <span class="badge bg-green">{{\App\Works::all()->count()}}</span></h1>
 @endsection
 
 @section('content')
@@ -72,48 +72,59 @@
                     <td>{{$work->created_at->diffForHumans()?$work->created_at->diffForHumans():"No date"}}</td>
                     <td>{{$work->updated_at->diffForHumans()?$work->updated_at->diffForHumans():"No date"}}</td>
                     <td>
-                        @if($work->is_active == 1)
 
-                            {!! Form::model($work,['method'=>'PATCH','action'=>['AdminWorksController@active',$work->id]]) !!}
+                        @if (Route::has('login'))
+                            @if (Auth::user()->isAdmin())
+                                @if($work->is_active == 1)
 
-
-                            <input type="hidden" value="0" name="is_active">
-
-                            <div class="form-group">
-                                {!! Form::submit('Un-approve', ['class'=>'btn btn-primary']) !!}
-                            </div>
-
-                            {!! Form::close() !!}
+                                    {!! Form::model($work,['method'=>'PATCH','action'=>['AdminWorksController@active',$work->id]]) !!}
 
 
-                        @else
+                                    <input type="hidden" value="0" name="is_active">
+
+                                    <div class="form-group">
+                                        {!! Form::submit('Un-approve', ['class'=>'btn btn-primary']) !!}
+                                    </div>
+
+                                    {!! Form::close() !!}
 
 
-                            {!! Form::model($work,['method'=>'PATCH','action'=>['AdminWorksController@active',$work->id]]) !!}
+                                @else
 
 
-                            <input type="hidden" value="1" name="is_active">
-
-                            <div class="form-group">
-                                {!! Form::submit('Approve', ['class'=>'btn btn-danger']) !!}
-                            </div>
-
-                            {!! Form::close() !!}
+                                    {!! Form::model($work,['method'=>'PATCH','action'=>['AdminWorksController@active',$work->id]]) !!}
 
 
+                                    <input type="hidden" value="1" name="is_active">
+
+                                    <div class="form-group">
+                                        {!! Form::submit('Approve', ['class'=>'btn btn-danger']) !!}
+                                    </div>
+
+                                    {!! Form::close() !!}
+
+
+                                @endif
+                            @else
+                                <div class="btn btn-danger">Guest cannot pass!</div>
+                            @endif
                         @endif
+
+
                     </td>
 
                 </tr>
 
             @endforeach
-
+            {{$works->links()}}
 
         @endif
 
 
         </tbody>
+
     </table>
+    <div class="text-center">{{$works->links()}}</div>
 
 
 @stop

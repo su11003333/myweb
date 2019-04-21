@@ -27,6 +27,17 @@
             color:white;
             background-color: #0b0b0b;
         }
+        #page-title {
+            background:url("{{asset('images/portofolio_bg.jpg')}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #page-title h1{
+            color:white;
+        }
+        #page-title span{
+            color:white;
+        }
 
     </style>
 

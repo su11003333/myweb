@@ -79,6 +79,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Works');
     }
 
+    public function playgrounds(){
+        return $this->hasMany('App\PlayGround');
+    }
+
 
 
 

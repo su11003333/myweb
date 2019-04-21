@@ -45,6 +45,17 @@
         .cbp-l-grid-masonry-projects-title{
             color:black;
         }
+        #page-title {
+            background:url("{{asset('images/portofolio_bg.jpg')}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #page-title h1{
+            color:white;
+        }
+        #page-title span{
+            color:white;
+        }
     </style>
 @endsection
 
@@ -81,7 +92,7 @@
                 {{--</div>--}}
             {{--</div>--}}
         {{--</div>--}}
-
+        @if($workscategories)
         <div id="js-filters-lightbox-gallery2" class="cbp-l-filters-button cbp-l-filters-left">
             <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">All</div>
             @foreach($workscategories as $workscategory)
@@ -93,6 +104,7 @@
             {{--<div data-filter=".logos" class="cbp-filter-item">Logo</div>--}}
             {{--<div data-filter=".motion" class="cbp-filter-item">Motion</div>--}}
         </div>
+        @endif
     </div>
 
     <div id="js-grid-lightbox-gallery" class="cbp" data-next-page="{{$works->nextPageUrl()}}">

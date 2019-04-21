@@ -47,4 +47,12 @@ class welcomeController extends Controller
 
     }
 
+    public function aboutme(){
+        return view('about.me');
+    }
+
+    public function aboutweb(){
+        return view('about.web');
+    }
+
 }

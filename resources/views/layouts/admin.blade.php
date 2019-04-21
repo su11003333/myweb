@@ -40,7 +40,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>STRAY DESIGN</span></a>
+                    <a href="{{url('/')}}" class="site_title"> <span>STRAY DESIGN</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -64,17 +64,19 @@
                     <div class="menu_section">
                         <h3>General</h3>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="index.html">Dashboard</a></li>
-                                    <li><a href="index2.html">Dashboard2</a></li>
-                                    <li><a href="index3.html">Dashboard3</a></li>
-                                </ul>
-                            </li>
+                            {{--<li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>--}}
+                                {{--<ul class="nav child_menu">--}}
+                                    {{--<li><a href="index.html">Dashboard</a></li>--}}
+                                    {{--<li><a href="index2.html">Dashboard2</a></li>--}}
+                                    {{--<li><a href="index3.html">Dashboard3</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</li>--}}
                             <li><a><i class="fa fa-edit"></i> Posts <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{route('posts.index')}}">All Posts</a></li>
                                     <li><a href="{{route('posts.create')}}">Create New Posts</a></li>
+                                    <li><a href="{{action('AdminCategoriesController@index')}}">All Categories</a></li>
+                                    <li><a href="{{action('AdminTagsController@index')}}">All Tags</a></li>
                                     <li><a href="{{route('comments.index')}}">Comments</a></li>
                                     {{--<li><a href="form_validation.html">Form Validation</a></li>--}}
                                     {{--<li><a href="form_wizards.html">Form Wizard</a></li>--}}
@@ -82,32 +84,43 @@
                                     {{--<li><a href="form_buttons.html">Form Buttons</a></li>--}}
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-desktop"></i> Users <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="{{action('AdminUsersController@index')}}">All Users</a></li>
-                                    <li><a href="{{action('AdminUsersController@create')}}">Create New Users</a></li>
-                                    {{--<li><a href="typography.html">Typography</a></li>--}}
-                                    {{--<li><a href="icons.html">Icons</a></li>--}}
-                                    {{--<li><a href="glyphicons.html">Glyphicons</a></li>--}}
-                                    {{--<li><a href="widgets.html">Widgets</a></li>--}}
-                                    {{--<li><a href="invoice.html">Invoice</a></li>--}}
-                                    {{--<li><a href="inbox.html">Inbox</a></li>--}}
-                                    {{--<li><a href="calendar.html">Calendar</a></li>--}}
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-table"></i> Categories <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="{{action('AdminCategoriesController@index')}}">All Categories</a></li>
-                                    <li><a href="{{action('AdminTagsController@index')}}">All Tags</a></li>
-                                    {{--<li><a href="tables_dynamic.html">Table Dynamic</a></li>--}}
-                                </ul>
-                            </li>
+
+
+                            @if(Auth::user()->isAdmin())
+                                <li><a><i class="fa fa-desktop"></i> Users <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="{{action('AdminUsersController@index')}}">All Users</a></li>
+                                        <li><a href="{{action('AdminUsersController@create')}}">Create New Users</a></li>
+                                        {{--<li><a href="typography.html">Typography</a></li>--}}
+                                        {{--<li><a href="icons.html">Icons</a></li>--}}
+                                        {{--<li><a href="glyphicons.html">Glyphicons</a></li>--}}
+                                        {{--<li><a href="widgets.html">Widgets</a></li>--}}
+                                        {{--<li><a href="invoice.html">Invoice</a></li>--}}
+                                        {{--<li><a href="inbox.html">Inbox</a></li>--}}
+                                        {{--<li><a href="calendar.html">Calendar</a></li>--}}
+                                    </ul>
+                                </li>
+                            @endif
+
+
+
+
+
                             <li><a><i class="fa fa-bar-chart-o"></i>Works <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{action('AdminWorksController@index')}}">All Works</a></li>
                                     <li><a href="{{action('AdminWorksController@create')}}">Create New Work</a></li>
                                     <li><a href="{{action('AdminWorkstagsController@index')}}">Works Tags</a></li>
                                     <li><a href="{{action('AdminWorkscategoriesController@index')}}">Works Categories</a></li>
+
+                                </ul>
+                            </li>
+
+                            <li><a><i class="fa fa-bar-chart-o"></i>Repos <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{action('AdminPlaygroundController@index')}}">All Repos</a></li>
+                                    <li><a href="{{action('AdminPlaygroundController@create')}}">Create New Repo</a></li>
+
 
                                 </ul>
                             </li>
@@ -199,14 +212,14 @@
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> Profile</a></li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="badge bg-red pull-right">50%</span>
-                                        <span>Settings</span>
-                                    </a>
-                                </li>
-                                <li><a href="javascript:;">Help</a></li>
+                                {{--<li><a href="javascript:;"> Profile</a></li>--}}
+                                {{--<li>--}}
+                                    {{--<a href="javascript:;">--}}
+                                        {{--<span class="badge bg-red pull-right">50%</span>--}}
+                                        {{--<span>Settings</span>--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
+                                {{--<li><a href="javascript:;">Help</a></li>--}}
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                document.getElementById('logout-form').submit();">
                                         <i class="fa fa-sign-out pull-right"></i> Log Out</a>

@@ -18,6 +18,8 @@
             <nav id="primary-menu">
 
                 <ul>
+                    <li><a href="{{route('home.aboutme')}}"><div>About Me</div></a>
+                    <li><a href="{{route('home.aboutweb')}}"><div>About Here</div></a>
                     <li><a href="{{route('home.posts')}}"><div>Posts</div></a>
 
                     </li>
@@ -100,7 +102,7 @@
                         </li>
                     @else
                         <li><a href="{{url('/login')}}"  ><div>Login</div></a></li>
-                        <li><a href="{{url('/register')}}"  ><div>Register</div></a></li>
+
                     @endif
 
                 </ul>

@@ -21,7 +21,7 @@ class AdminWorksController extends Controller
     public function index()
     {
         //
-        $works = Works::all();
+        $works = Works::orderBy('created_at','desc')->paginate('10');
 
         return view('admin.works.index',compact('works'));
     }
@@ -244,7 +244,7 @@ class AdminWorksController extends Controller
 
         $workscategories = Workscategories::all();
 
-        $works = Works::where('is_active','1')->orderBy('star','desc')->orderBy('updated_at','desc')->paginate(5);
+        $works = Works::where('is_active','1')->orderBy('star','desc')->orderBy('updated_at','desc')->paginate(15);
 
         if($request->ajax()){
             return [
@@ -310,6 +310,32 @@ class AdminWorksController extends Controller
 
         return view('/works/single',compact('work','workscategories', 'relateworks'));
 
+
+    }
+
+    public function search_workscategory(Request $request, $id){
+
+
+
+        $works = Works::where('is_active','1')->where('workscategories_id',$id)->orderBy('star','desc')->orderBy('updated_at','desc')->paginate(6);
+
+
+
+        if($request->ajax()){
+            return [
+                'works' => view('layouts.ajax.ajax_load_more')->with(compact('works'))->render(),
+                'next_page'=>$works->nextPageUrl()
+            ];
+        }
+        return view('/works/index_category',compact('works'));
+
+//        if (Request::ajax()) {
+//            return Response::json(View::make('layouts.ajax.ajax_load_more', array('works' => $works))->render());
+//        }
+//        return view('/works/index',compact('works','workscategories'));
+
+
+//        return $posts;
 
     }
 

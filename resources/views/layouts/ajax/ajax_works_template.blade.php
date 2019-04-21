@@ -158,10 +158,11 @@
             </a>
         </div>
 
-
+        @if($work->url)
         <div class="cbp-l-inline-view-wrap">
             <a href="{{$work->url}}" target="_blank" class="cbp-l-project-details-visit" style="background-color:black;">OPEN PROJECT</a>
         </div>
+        @endif
     </div>
 </div>
 

@@ -18,6 +18,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/aboutme',['as'=>'home.aboutme','uses'=>'welcomeController@aboutme'] );
+
+Route::get('/aboutweb',['as'=>'home.aboutweb','uses'=>'welcomeController@aboutweb'] );
+
 Route::get('/',['as'=>'/','uses'=>'welcomeController@index']);
 
 Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostsController@post']);
@@ -27,6 +31,8 @@ Route::get('/posts',['as'=>'home.posts','uses'=>'AdminPostsController@posts']);
 Route::get('/works',['as'=>'home.works','uses'=>'AdminWorksController@works']);
 
 Route::get('/work/{id}',['as'=>'home.work','uses'=>'AdminWorksController@work_single']);
+
+Route::get('/works/workscategory/{id}',['as'=>'search.workscategory','uses'=>'AdminWorksController@search_workscategory']);
 
 Route::get('/ajax-work-template/{id}',['as'=>'home.ajax-work','uses'=>'AdminWorksController@ajax_work']);
 
@@ -108,6 +114,8 @@ Route::group(['middleware'=>'admin'], function(){
         Route::resource('/admin/comments','PostCommentsController');
 
         Route::resource('/admin/comment/replies','CommentRepliesController');
+
+        Route::resource('/admin/playground','AdminPlaygroundController');
 
 
 });

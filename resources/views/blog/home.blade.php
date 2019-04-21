@@ -9,7 +9,7 @@
 
         <div class="container clearfix">
             <h1>Posts</h1>
-            <span>Showcase of Our Awesome Works</span>
+            {{--<span>Showcase of Our Awesome Works</span>--}}
             {{ Counter::count('blog_home') }}
             {{--<ol class="breadcrumb">--}}
             {{--<li><a href="#">Home</a></li>--}}

@@ -6,6 +6,7 @@ use App\Category;
 use App\Post;
 use App\Tag;
 use App\Works;
+use App\Workscategories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -55,4 +56,8 @@ class SearchController extends Controller
 
         return view ('blog.home',compact('posts','categories','tags'));
     }
+
+
+
+
 }
